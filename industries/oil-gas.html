@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oil & Gas — Anaco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff; --surface: #f7f8fa; --surface-2: #eef0f4;
@@ -19,15 +19,15 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font-body); color: var(--text-2); background: var(--bg); overflow-x: hidden; }
-  .navbar { position: relative; z-index: 1000; background: #1e3a5f; }
+  .navbar { position: relative; z-index: 1000; background: #146ca6; }
   .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: #fff; letter-spacing: 1.5px; text-decoration: none; }
+  .logo { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 20px; color: #fff; letter-spacing: 1.5px; text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-  .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-transform: uppercase; }
+  .nav-links a { font-family: 'Quicksand', sans-serif; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; text-transform: uppercase; }
   .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
   .nav-links a.active { color: #fff; }
-  .nav-links .cta-btn { background: var(--orange); color: #fff !important; padding: 8px 20px; border-radius: 100px; font-weight: 600; margin-left: 8px; }
-  .nav-links .cta-btn:hover { background: #a85200; }
+  .nav-links .cta-btn { background: #99A183; color: #fff !important; padding: 8px 20px; border-radius: 100px; font-weight: 600; margin-left: 8px; }
+  .nav-links .cta-btn:hover { background: #7d8669; }
   .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
   .mobile-toggle span { width: 22px; height: 1.5px; background: #fff; border-radius: 2px; }
   .ind-hero-img { height: 320px; background-image: url('../images/oilandgas.jpg'); background-size: cover; background-position: center; position: relative; }
@@ -70,7 +70,7 @@
   @media (max-width: 900px) { .usecases-grid { grid-template-columns: 1fr; } }
   @media (max-width: 680px) {
     .nav-links { display: none; } .mobile-toggle { display: flex; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #1e3a5f; padding: 20px 40px; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #146ca6; padding: 20px 40px; }
     .section { padding: 60px 24px; } .ind-hero-text { padding: 30px 24px 40px; }
     .footer-inner { flex-direction: column; text-align: center; }
   }
