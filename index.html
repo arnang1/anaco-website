@@ -44,10 +44,10 @@
   .mobile-toggle span { width: 22px; height: 1.5px; background: #fff; border-radius: 2px; }
 
   /* ── HERO ── */
-  .hero { min-height: 100vh; background: var(--bg); display: flex; align-items: center; position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; background: var(--bg); display: flex; align-items: center; position: relative; overflow: visible; }
   .hero::before { content: ''; position: absolute; inset: 0;
     background: radial-gradient(ellipse 800px 600px at 20% 50%, var(--accent-dim), transparent), radial-gradient(ellipse 600px 400px at 85% 20%, rgba(99,102,241,0.03), transparent); }
-  .hero-inner { max-width: 1280px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; width: 100%; }
+  .hero-inner { max-width: 1280px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; position: relative; z-index: 1; width: 100%; overflow: visible; }
 
   .hero-visual { display: flex; align-items: center; justify-content: center; }
   .lab-device { width: 100%; max-width: 420px; aspect-ratio: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 32px;
@@ -69,15 +69,15 @@
   .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
   .hero-content h1 { font-family: var(--font-display); font-size: clamp(38px, 4.5vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 28px; letter-spacing: -1px; color: var(--text); text-align: center; }
   .hero-content h1 em { font-style: normal; color: var(--accent); }
-  .hero-desc { font-size: 16px; line-height: 1.75; color: var(--text-2); max-width: 640px; margin-bottom: 24px; font-weight: 300; }
+  .hero-desc { font-size: 16px; line-height: 1.75; color: var(--text-2); max-width: 640px; margin-bottom: 36px; font-weight: 300; }
   .hero-desc strong { color: var(--text); font-weight: 600; }
   .hero-desc em { color: var(--accent); font-style: italic; }
   .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 100px; font-family: var(--font-body); font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; border: none; transition: all 0.3s; }
-  .btn-primary { background: var(--accent); color: var(--bg); box-shadow: 0 4px 20px var(--accent-glow); }
-  .btn-primary:hover { background: var(--accent-bright); transform: translateY(-2px); box-shadow: 0 8px 28px var(--accent-glow); }
-  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-outline:hover { border-color: var(--text-3); background: var(--surface); transform: translateY(-2px); }
+  .btn-primary { background: #fff; color: #146ca6; border: 1px solid #146ca6; }
+  .btn-primary:hover { background: #146ca6; color: #fff; transform: translateY(-2px); }
+  .btn-outline { background: #146ca6; color: #fff; border: 1px solid #146ca6; }
+  .btn-outline:hover { background: #fff; color: #146ca6; transform: translateY(-2px); }
 
   /* ── INDUSTRIES ── */
   .industries { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -126,7 +126,8 @@
   .banner-content { text-align: center; position: relative; z-index: 1; padding: 0 40px; }
   .banner-content h2 { font-family: var(--font-display); font-size: clamp(26px, 3.5vw, 42px); font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
   .banner-content p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
-  .banner .btn-primary { background: var(--accent-bright); color: #fff; }
+  .banner .btn-primary { background: #fff; color: #146ca6; border-color: #fff; }
+  .banner .btn-primary:hover { background: #146ca6; color: #fff; border-color: #146ca6; }
   .molecule { position: absolute; border: 1px solid rgba(37,99,235,0.1); border-radius: 50%; animation: floatMol 8s ease-in-out infinite; }
   .molecule:nth-child(1) { width: 70px; height: 70px; top: 15%; left: 10%; }
   .molecule:nth-child(2) { width: 100px; height: 100px; bottom: 10%; right: 8%; animation-delay: 2s; }
@@ -183,12 +184,12 @@
 </div></nav>
 
 <section class="hero" id="hero"><div class="hero-inner">
-  <div class="hero-visual fade-in">
-    <img src="images/tinylab-device.gif" alt="TinyLab Device" style="width:100%;max-width:480px;border-radius:16px;">
+  <div class="hero-visual fade-in" style="position:relative;overflow:visible;margin-left:-280px;">
+    <img src="images/tinylab-device.gif" alt="TinyLab Device" style="width:110%;max-width:none;-webkit-mask-image:linear-gradient(to right, black 80%, transparent 98%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%), radial-gradient(circle 80px at 100% 0%, transparent 20%, black 100%);-webkit-mask-composite:destination-in;mask-image:linear-gradient(to right, black 80%, transparent 98%), linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%), radial-gradient(circle 80px at 100% 0%, transparent 20%, black 100%);mask-composite:intersect;">
   </div>
 
   <div class="hero-content fade-in">
-    <h1>Meet <em>TinyLab</em></h1>
+    <h1>Meet <em style="color:#146ca6">tinylab</em></h1>
 
     <p class="hero-desc">
       The world's most accessible laboratory. TinyLab takes samples, performs experiments, isolates compounds, captures measurements, and interprets results — all within a single, desktop-sized appliance. Reliable, intuitive, and built to last.
@@ -211,11 +212,26 @@
   </div>
 </div></section>
 
+<!-- VIDEO -->
+<div style="max-width:900px;margin:0 auto;padding:40px 40px;">
+  <div style="position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;border:1px solid var(--border);">
+    <video id="heroVideo" style="width:100%;height:100%;object-fit:cover;" poster="" playsinline>
+      <!-- <source src="images/your-video.mp4" type="video/mp4"> -->
+    </video>
+    <div id="videoOverlay" onclick="playVideo()" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.4);">
+      <div style="width:72px;height:72px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#146ca6"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+    </div>
+  </div>
+  <p style="display:none"></p>
+</div>
+
 <section class="industries" id="industries">
   <div class="section-header fade-in">
-    <div class="section-eyebrow">Industries</div>
-    <h2>Precision for Every Sector</h2>
-    <p>From agriculture to defense, TinyLab delivers laboratory-grade analytics wherever critical decisions are made.</p>
+    <div class="section-eyebrow" style="display:none">Industries</div>
+    <h2>One Device, Infinite Uses</h2>
+    <p>From agriculture to chemicals to fermentation, TinyLab delivers laboratory-grade results wherever critical decisions need to be made.</p>
   </div>
   <div class="carousel-wrapper"><div class="carousel-track" id="carouselTrack">
     <div class="industry-card fade-in" onclick="location.href='industries/winemaking.html'"><div class="card-image" style="background-image:url('images/winery.jpg')"></div><div class="card-body"><h3>Wine & Beer</h3><span class="card-arrow">→</span></div></div>
@@ -285,6 +301,13 @@
 </div></div>
 
 <script>
+function playVideo() {
+  var video = document.getElementById('heroVideo');
+  var overlay = document.getElementById('videoOverlay');
+  video.play();
+  overlay.style.display = 'none';
+  video.setAttribute('controls', 'true');
+}
 function scrollCarousel(d){document.getElementById('carouselTrack').scrollBy({left:d*280,behavior:'smooth'})}
 function openModal(){document.getElementById('ceoModal').classList.add('active');document.body.style.overflow='hidden'}
 function closeModal(){document.getElementById('ceoModal').classList.remove('active');document.body.style.overflow=''}

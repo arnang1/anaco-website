@@ -146,94 +146,13 @@
 </section>
 
 <nav class="anchor-nav">
-  <a href="#team">Team</a>
-  <a href="#events">Events</a>
-  <a href="#newsletter">Newsletter</a>
-  <a href="#careers">Careers</a>
-  <a href="#contact">Contact</a>
   <a href="#facilities">Facilities</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#contact">Contact</a>
+  <a href="#careers">Careers</a>
   <a href="#manufacturing">Contract Manufacturing</a>
 </nav>
 
-<!-- TEAM -->
-<div class="section fade-in" id="team">
-  <div class="section-eyebrow">Team</div>
-  <h2>The People Behind Anaco</h2>
-  <div class="team-grid">
-    <div class="team-card"><div class="team-photo"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="#94a3b8" stroke-width="2"/><path d="M10 42c0-8 6-14 14-14s14 6 14 14" stroke="#94a3b8" stroke-width="2"/></svg></div><h3>Benjamin Liker</h3><div class="role">Founder & CEO</div></div>
-    <div class="team-card"><div class="team-photo"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="#94a3b8" stroke-width="2"/><path d="M10 42c0-8 6-14 14-14s14 6 14 14" stroke="#94a3b8" stroke-width="2"/></svg></div><h3>Team Member</h3></div>
-    <div class="team-card"><div class="team-photo"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="8" stroke="#94a3b8" stroke-width="2"/><path d="M10 42c0-8 6-14 14-14s14 6 14 14" stroke="#94a3b8" stroke-width="2"/></svg></div><h3>Team Member</h3></div>
-  </div>
-</div>
-
-<!-- EVENTS -->
-<div class="section section-border fade-in" id="events">
-  <div class="section-eyebrow">Events</div>
-  <h2>Upcoming Events</h2>
-  <div class="empty-state">No upcoming events at this time. Check back soon.</div>
-</div>
-
-<!-- NEWSLETTER -->
-<div class="alt-bg">
-<div class="section fade-in" id="newsletter">
-  <div class="newsletter-box">
-    <div class="section-eyebrow">Newsletter</div>
-    <h3>Stay in the Loop</h3>
-    <p>Get the latest updates on TinyLab, new features, and industry insights delivered to your inbox.</p>
-    <div id="newsletterContent">
-      <div class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" id="newsletterEmail" required>
-        <button class="btn btn-primary btn-sm" onclick="submitNewsletter()">Subscribe</button>
-      </div>
-    </div>
-    <div id="newsletterSuccess" style="display:none;padding:16px 0;">
-      <p style="color:var(--accent);font-weight:600;margin-bottom:0;">You're subscribed! We'll keep you in the loop.</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- CAREERS -->
-<div class="section section-border fade-in" id="careers">
-  <div class="section-eyebrow">Careers</div>
-  <h2>Join Our Team</h2>
-  <div class="empty-state">No open positions at this time. Check back soon or send us your resume at <a href="mailto:bliker@anaco.com" style="color:var(--accent);text-decoration:none;font-weight:500">bliker@anaco.com</a></div>
-</div>
-
-<!-- CONTACT -->
-<div class="alt-bg">
-<div class="section fade-in" id="contact">
-  <div class="two-col">
-    <div>
-      <div class="section-eyebrow">Contact</div>
-      <h2>Get in Touch</h2>
-      <p>Have a question about TinyLab, partnerships, or anything else? We'd love to hear from you.</p>
-      <p style="margin-top:20px"><strong style="color:var(--text)">Email:</strong> <a href="mailto:bliker@anaco.com" style="color:var(--accent);text-decoration:none">bliker@anaco.com</a></p>
-    </div>
-    <div class="form-card" id="contactFormCard">
-      <div id="contactFormContent">
-        <div class="form-row">
-          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="contactName" required></div>
-          <div class="form-group"><label>Company</label><input type="text" placeholder="Company name" id="contactCompany"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="you@company.com" id="contactEmail" required></div>
-          <div class="form-group"><label>Phone</label><input type="tel" placeholder="(555) 000-0000" id="contactPhone"></div>
-        </div>
-        <div class="form-group"><label>Message *</label><textarea placeholder="How can we help?" id="contactMessage" required></textarea></div>
-        <button class="submit-btn" onclick="submitContact()">Send Message →</button>
-      </div>
-      <div id="contactSuccess" style="display:none;text-align:center;padding:40px 20px;">
-        <div style="width:56px;height:56px;background:var(--accent-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
-          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="var(--accent)" stroke-width="3"><path d="M6 16l7 7L26 9"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-display);font-size:22px;color:var(--text);margin-bottom:10px;">Message Sent</h3>
-        <p style="font-size:14px;color:var(--text-3);line-height:1.7;">Thank you for reaching out. We'll get back to you shortly.</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 <!-- FACILITIES -->
 <div class="section fade-in" id="facilities">
@@ -447,6 +366,72 @@
   </div>
 </div>
 
+<!-- NEWSLETTER -->
+<div class="alt-bg">
+<div class="section fade-in" id="newsletter">
+  <div class="newsletter-box">
+    <div class="section-eyebrow">Newsletter</div>
+    <h3>Stay in the Loop</h3>
+    <p>Get the latest updates on TinyLab, new features, and industry insights delivered to your inbox.</p>
+    <div id="newsletterContent">
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" id="newsletterEmail" required>
+        <button class="btn btn-primary btn-sm" onclick="submitNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div id="newsletterSuccess" style="display:none;padding:16px 0;">
+      <p style="color:var(--accent);font-weight:600;margin-bottom:0;">You're subscribed! We'll keep you in the loop.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- CONTACT -->
+<div class="alt-bg">
+<div class="section fade-in" id="contact">
+  <div class="two-col">
+    <div>
+      <div class="section-eyebrow">Contact</div>
+      <h2>Get in Touch</h2>
+      <p>Have a question about TinyLab, partnerships, or anything else? We'd love to hear from you.</p>
+      <p style="margin-top:20px"><strong style="color:var(--text)">Email:</strong> <a href="mailto:bliker@anaco.com" style="color:var(--accent);text-decoration:none">bliker@anaco.com</a></p>
+    </div>
+    <div class="form-card" id="contactFormCard">
+      <div id="contactFormContent">
+        <div class="form-row">
+          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="contactName" required></div>
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Company name" id="contactCompany"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="you@company.com" id="contactEmail" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="(555) 000-0000" id="contactPhone"></div>
+        </div>
+        <div class="form-group"><label>Message *</label><textarea placeholder="How can we help?" id="contactMessage" required></textarea></div>
+        <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+      </div>
+      <div id="contactSuccess" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="width:56px;height:56px;background:var(--accent-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="var(--accent)" stroke-width="3"><path d="M6 16l7 7L26 9"/></svg>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;color:var(--text);margin-bottom:10px;">Message Sent</h3>
+        <p style="font-size:14px;color:var(--text-3);line-height:1.7;">Thank you for reaching out. We'll get back to you shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CAREERS -->
+<div class="section section-border fade-in" id="careers">
+  <div class="section-eyebrow">Careers</div>
+  <h2>Join Our Team</h2>
+  <div class="empty-state">No open positions at this time. Check back soon or send us your resume at <a href="mailto:bliker@anaco.com" style="color:var(--accent);text-decoration:none;font-weight:500">bliker@anaco.com</a></div>
+</div>
+
+
+
 <!-- CONTRACT MANUFACTURING -->
 <div class="alt-bg">
 <div class="section fade-in" id="manufacturing">
@@ -480,6 +465,7 @@
   </div>
 </div>
 </div>
+
 
 <footer class="footer"><div class="footer-inner">
   <div class="footer-left"><a href="terms.html">Terms of Service</a><span>·</span><span>© 2026 The Analysis Company</span><span>·</span><a href="mailto:bliker@anaco.com">Contact Us</a></div>
