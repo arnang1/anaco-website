@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Order — Anaco</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/anaco.css">
+<script src="../js/anaco.js" defer></script>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+</head>
+<body class="site-page">
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo"><img src="../images/favicon.png" alt="" class="brand-mark" width="36" height="36"><span>Anaco</span></a>
+    <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../preorder/" class="nav-cta">Pre-Order</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="site-page-main">
+<section class="page-section page-section--flush">
+  <div class="page-wrap">
+    <div class="sheet sheet--top">
+      <div class="sheet-head">
+        <span class="sheet-label">Reserve</span>
+        <h1 class="display-xl">Pre-order <span class="accent-chip">TinyLab</span></h1>
+        <p class="sheet-lead">Be among the first to bring portable analytical power to your facility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="page-section" id="preorder-main">
+  <div class="page-wrap">
+    <div class="sheet preorder-sheet">
+
+      <div class="preorder-col preorder-col--pricing">
+        <div class="callout callout--accent callout--pricing preorder-pricing-box fade-in">
+          <span class="layer-kicker">Pricing</span>
+          <h2 class="display-lg">Laboratory-grade analysis, accessible pricing</h2>
+          <p class="callout-price">$599 <span>/ month</span></p>
+          <p class="callout-text">Everything you need to run your lab. Module upgrades available.</p>
+          <p class="deposit-note">Guarantee a spot in our production run with a <strong>$499 deposit</strong></p>
+          <a href="#preorder-form" class="btn btn-primary btn-lg">Pre-Order Now →</a>
+        </div>
+      </div>
+
+      <div class="preorder-col preorder-col--form">
+        <div class="form-panel fade-in" id="preorder-form">
+          <div id="formContent">
+            <h2 class="display-md">Request a pre-order</h2>
+            <p class="body-lg">Fill out the form below and our team will reach out to confirm your order details and timeline.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" placeholder="Jane" id="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" placeholder="Smith" id="lastName" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Work Email *</label>
+              <input type="email" placeholder="jane@company.com" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company / Organization *</label>
+              <input type="text" placeholder="Acme Corp" id="company" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="industry">Industry *</label>
+                <select id="industry" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option>Wine & Beer</option>
+                  <option>Biomanufacturing</option>
+                  <option>Agriculture</option>
+                  <option>Chemicals</option>
+                  <option>Oil & Gas</option>
+                  <option>Research</option>
+                  <option>Defense</option>
+                  <option>Municipal</option>
+                  <option>Education</option>
+                  <option>Beverages</option>
+                  <option>CPG Food</option>
+                  <option>Nutrition & Supplements</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="units">Estimated Units *</label>
+                <input type="text" id="units" name="units" inputmode="numeric" placeholder="How many?" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Additional Notes (Optional)</label>
+              <textarea placeholder="Tell us about your use case..." id="notes"></textarea>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitForm()">Submit Pre-Order Request →</button>
+            <p class="form-note">No payment required. Our team will follow up within 2 business days.</p>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="check">
+              <svg viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="3"><path d="M6 16l7 7L26 9"/></svg>
+            </div>
+            <h3>Request Received!</h3>
+            <p>Thank you for your interest in TinyLab. Our team will reach out within 2 business days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="preorder-col preorder-col--side">
+        <div class="preorder-diagram fade-in" aria-hidden="true">
+          <div class="preorder-orbit-stage pattern-hatch-light">
+            <div class="preorder-orbit-axis preorder-orbit-axis--v"></div>
+            <div class="preorder-orbit-axis preorder-orbit-axis--h"></div>
+            <div class="preorder-orbit-hub">
+              <div class="preorder-orbit-ring preorder-orbit-ring--1"><span class="preorder-orbit-particle"></span></div>
+              <div class="preorder-orbit-ring preorder-orbit-ring--2"><span class="preorder-orbit-particle"></span></div>
+              <div class="preorder-orbit-ring preorder-orbit-ring--3"><span class="preorder-orbit-particle"></span></div>
+              <div class="preorder-orbit-core"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preorder-info fade-in">
+          <h2 class="display-md">Why pre-order?</h2>
+          <p class="body-lg">TinyLab is entering production and units are allocated on a first-come, first-served basis.</p>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Priority Access</h4>
+              <p>Pre-order customers receive their units from the first production batch.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h4>Dedicated Onboarding</h4>
+              <p>Personalized setup, training, and integration support at no extra cost.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <h4>No Payment Until Shipment</h4>
+              <p>Your pre-order reserves your spot. You'll only be invoiced when your unit ships.</p>
+            </div>
+          </div>
+          <div class="contact-inline">
+            <h4>Prefer to reach out directly?</h4>
+            <p>Email us at <a href="mailto:bliker@anaco.com" class="link-neon">bliker@anaco.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+<script>
+function submitForm(){
+  var firstName = document.getElementById('firstName');
+  var lastName = document.getElementById('lastName');
+  var email = document.getElementById('email');
+  var company = document.getElementById('company');
+  var industry = document.getElementById('industry');
+  var units = document.getElementById('units');
+  var notes = document.getElementById('notes');
+
+  var fields = [firstName, lastName, email, company, industry];
+  var valid = true;
+
+  fields.forEach(function(f) {
+    f.style.borderColor = '';
+    var val = (f.value || '').trim();
+    if (!val) {
+      f.style.borderColor = '#ef4444';
+      valid = false;
+    }
+  });
+
+  units.style.borderColor = '';
+  var unitsValue = (units.value || '').trim();
+  if (!/^\d+$/.test(unitsValue) || parseInt(unitsValue, 10) < 1) {
+    units.style.borderColor = '#ef4444';
+    valid = false;
+  }
+
+  if (!valid) {
+    alert('Please fill in all required fields. Estimated units must be a whole number (1 or greater).');
+    return;
+  }
+
+  var data = new FormData();
+  data.append('first_name', firstName.value);
+  data.append('last_name', lastName.value);
+  data.append('email', email.value);
+  data.append('company', company.value);
+  data.append('industry', industry.value);
+  data.append('estimated_units', unitsValue);
+  data.append('_subject', 'TinyLab Pre-Order Request — ' + firstName.value + ' ' + lastName.value);
+  data.append('_template', 'table');
+  if (notes.value) data.append('additional_notes', notes.value);
+
+  fetch('https://formsubmit.co/ajax/agangla@anaco.com', {
+    method: 'POST',
+    body: data
+  })
+  .then(function() {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  })
+  .catch(function() {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+}
+
+(function () {
+  var units = document.getElementById('units');
+  if (!units) return;
+  units.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+})();
+</script>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-left"><a href="../#terms">Terms of Service</a><span>·</span><a href="../#privacy">Privacy Policy</a><span>·</span><span>© 2026 The Analysis Company</span><span>·</span><a href="mailto:bliker@anaco.com">Contact Us</a></div>
+  
+</div></footer>
+<script>
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

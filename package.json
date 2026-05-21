@@ -1,0 +1,8 @@
+{
+  "name": "anaco-website",
+  "private": true,
+  "scripts": {
+    "preview": "python -m http.server 3000",
+    "preview:serve": "npx --yes serve . -l 3000"
+  }
+}

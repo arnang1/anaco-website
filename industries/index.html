@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries — Anaco</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/anaco.css">
+<script src="../js/anaco.js" defer></script>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+</head>
+<body class="site-page">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo"><img src="../images/favicon.png" alt="" class="brand-mark" width="36" height="36"><span>Anaco</span></a>
+    <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../preorder/" class="nav-cta">Pre-Order</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="industries-list" hidden>
+<section class="page-hero blur-in">
+  <p class="eyebrow">Use cases</p>
+  <h1 class="display-lg">Industries we serve</h1>
+  <p class="lead">TinyLab delivers reliable results — <span class="text-rotator" data-rotate="in the field.|at the bench.|on the line.|at home."></span></p>
+</section>
+
+
+<div class="section"><div class="industry-grid" id="industryGrid">
+    <div class="ind-card fade-in" data-category="production consumer" onclick="location.href='./#winemaking'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/winery.jpg"></div><div class="ind-card-body"><h3>Wine & Beer</h3><p>Monitor fermentation, measure sugar content, pH, acidity, and SO₂ levels in real-time.</p><div><a href="./#winemaking" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="production science" onclick="location.href='./#biomanufacturing'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/biomanufacturing.jpg"></div><div class="ind-card-body"><h3>Biomanufacturing</h3><p>Track critical process parameters during cell culture and fermentation.</p><div><a href="./#biomanufacturing" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="production" onclick="location.href='./#agriculture'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/agriculture.jpg"></div><div class="ind-card-body"><h3>Agriculture</h3><p>Test soil composition, water quality, and crop health directly in the field.</p><div><a href="./#agriculture" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="production" onclick="location.href='./#chemicals'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/chemicals.jpg"></div><div class="ind-card-body"><h3>Chemicals</h3><p>On-line and at-line quality control for chemical manufacturing.</p><div><a href="./#chemicals" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="production" onclick="location.href='./#oil-gas'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/oilandgas.jpg"></div><div class="ind-card-body"><h3>Oil & Gas</h3><p>Analyze drilling fluids, produced water, and crude composition at the wellhead.</p><div><a href="./#oil-gas" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="science" onclick="location.href='./#research'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/research.jpg"></div><div class="ind-card-body"><h3>Research</h3><p>Accelerate fieldwork with portable analysis for environmental sampling.</p><div><a href="./#research" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="public" onclick="location.href='./#defense'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/defense.jpg"></div><div class="ind-card-body"><h3>Defense</h3><p>Rapid chemical identification and environmental hazard detection in the field.</p><div><a href="./#defense" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="public" onclick="location.href='./#municipal'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/municipal.jpg"></div><div class="ind-card-body"><h3>Municipal</h3><p>Monitor drinking water quality, wastewater treatment, and environmental compliance.</p><div><a href="./#municipal" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="public science" onclick="location.href='./#k12-education'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/education.jpg"></div><div class="ind-card-body"><h3>K–12 Education</h3><p>Give students hands-on experience with real analytical instrumentation in a safe, accessible format.</p><div><a href="./#k12-education" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="public science" onclick="location.href='./#university-education'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/universityeducation.jpg"></div><div class="ind-card-body"><h3>University Education</h3><p>Equip teaching labs and student research with professional-grade analytical capabilities at a fraction of the cost.</p><div><a href="./#university-education" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="consumer" onclick="location.href='./#home'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/home.jpg"></div><div class="ind-card-body"><h3>For Home</h3><p>Test your food, experiment with fermentation, and check the ingredients in your beauty products.</p><div><a href="./#home" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="consumer production" onclick="location.href='./#beverages'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/beverages.jpg"></div><div class="ind-card-body"><h3>Beverages</h3><p>Quality control for juice, dairy, spirits, and beyond.</p><div><a href="./#beverages" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="consumer production" onclick="location.href='./#cpg-food'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/cpg.jpg"></div><div class="ind-card-body"><h3>CPG Food</h3><p>Ensure food safety and quality across the supply chain.</p><div><a href="./#cpg-food" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="consumer science" onclick="location.href='./#nutrition-supplements'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/supplementsnutrition.jpg"></div><div class="ind-card-body"><h3>Nutrition & Supplements</h3><p>Verify ingredient purity, potency, and composition for nutraceuticals.</p><div><a href="./#nutrition-supplements" class="card-link">Learn more →</a></div></div></div>
+    <div class="ind-card fade-in" data-category="consumer" onclick="location.href='./#beauty-fragrance'" style="cursor:pointer"><div class="ind-card-image" data-bg="../images/beautyfragrances.jpg"></div><div class="ind-card-body"><h3>Beauty & Fragrances</h3><p>Analyze ingredient composition, fragrance profiles, and product purity for cosmetics and personal care.</p><div><a href="./#beauty-fragrance" class="card-link">Learn more →</a></div></div></div>
+</div></div>
+
+<section class="cta-banner" id="industries-list-cta"><h2>Don't See Your Industry?</h2><p>TinyLab is built to be adaptable. Get in touch and we'll explore how it fits your use case.</p><a href="mailto:bliker@anaco.com" class="btn btn-primary">Contact Us →</a></section>
+</div>
+
+<div id="industries-details">
+
+<article class="ind-detail" id="agriculture" data-title="Agriculture" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Agriculture</h1>
+      <div class="tags"><span class="tag">Soil</span><span class="tag">Crop Health</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Agriculture</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…soil composition</h3>
+        <p>Measure nutrient levels, pH, moisture content, and contaminants directly in the field — no more sending samples to distant labs.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with fertilization strategies</h3>
+        <p>Compare the effects of different treatments on crop chemistry and soil health with immediate analytical feedback.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…irrigation and yield</h3>
+        <p>Use real-time data to make informed decisions on watering, harvesting, and storage timing.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…water quality</h3>
+        <p>Test irrigation water sources for contaminants, mineral content, and suitability for your crops.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Agriculture Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="beauty-fragrance" data-title="Beauty & Fragrance" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Beauty & Fragrance</h1>
+      <div class="tags"><span class="tag">Cosmetics</span><span class="tag">QC</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Beauty & Fragrance</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…ingredient composition</h3>
+        <p>Analyze active ingredient concentrations, preservative levels, and fragrance profiles with precision.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Verify:</div>
+        <h3>…product claims</h3>
+        <p>Confirm that "organic," "natural," and "free-from" marketing claims are backed by analytical evidence.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with new formulations</h3>
+        <p>Develop fragrances, skincare actives, and cosmetic formulations with real-time compositional feedback.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with safety regulations</h3>
+        <p>Generate analytical documentation for EU Cosmetics Regulation, FDA, and international standards.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Beauty Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="beverages" data-title="Beverages" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Beverages</h1>
+      <div class="tags"><span class="tag">QC</span><span class="tag">Production</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Beverages</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…product quality</h3>
+        <p>Measure sugar levels, acidity, microbial indicators, and flavor compounds throughout the production line.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with new formulations</h3>
+        <p>Develop and refine new beverage recipes with immediate analytical feedback on composition and stability.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…production efficiency</h3>
+        <p>Identify quality issues early in the process, reducing waste and rework across the supply chain.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Verify:</div>
+        <h3>…label accuracy</h3>
+        <p>Confirm that nutritional claims and ingredient declarations match actual product composition.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Beverages Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="biomanufacturing" data-title="Biomanufacturing" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Biomanufacturing</h1>
+      <div class="tags"><span class="tag">Bioprocess</span><span class="tag">PAT</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Biomanufacturing</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…critical process parameters</h3>
+        <p>Track metabolites, nutrients, pH, and dissolved gases during cell culture and fermentation in real-time.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with process conditions</h3>
+        <p>Screen media formulations, feeding strategies, and growth conditions with rapid analytical turnaround.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…batch consistency</h3>
+        <p>Reduce batch-to-batch variability with continuous inline and at-line monitoring throughout production.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with regulatory standards</h3>
+        <p>Generate the analytical documentation required for GMP compliance and process validation.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Biomanufacturing Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="chemicals" data-title="Chemicals" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Chemicals</h1>
+      <div class="tags"><span class="tag">QA/QC</span><span class="tag">Safety</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Chemicals</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…product specifications</h3>
+        <p>Verify concentrations, detect contaminants, and confirm compositional standards throughout the manufacturing process.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…process conditions</h3>
+        <p>Perform on-line and at-line quality control to catch deviations before they become costly production issues.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…yield and efficiency</h3>
+        <p>Use real-time analytical data to fine-tune reaction conditions, reduce waste, and maximize throughput.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with safety standards</h3>
+        <p>Meet OSHA, EPA, and REACH regulatory requirements with documented analytical evidence.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Chemicals Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="cpg-food" data-title="CPG Food" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">CPG Food</h1>
+      <div class="tags"><span class="tag">Food Safety</span><span class="tag">QC</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for CPG Food</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…for contaminants</h3>
+        <p>Screen for pesticides, heavy metals, allergens, and microbial contamination at every stage of the supply chain.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Verify:</div>
+        <h3>…nutritional content</h3>
+        <p>Confirm that macronutrient, vitamin, and mineral levels match label claims and regulatory standards.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…shelf stability</h3>
+        <p>Track chemical changes over time to validate shelf-life claims and optimize packaging strategies.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with food safety standards</h3>
+        <p>Generate documentation for FSMA, HACCP, and international food safety certifications.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your CPG Food Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="defense" data-title="Defense" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Defense</h1>
+      <div class="tags"><span class="tag">CBRN</span><span class="tag">Field Ops</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Defense</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="usecase-label">Identify:</div>
+        <h3>…chemical threats</h3>
+        <p>Rapidly detect and classify chemical warfare agents, industrial chemicals, and environmental hazards in the field.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…environmental conditions</h3>
+        <p>Perform real-time air, water, and soil analysis in forward operating environments and contaminated zones.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Verify:</div>
+        <h3>…decontamination</h3>
+        <p>Confirm that decontamination procedures have been effective before clearing personnel to return to an area.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="usecase-label">Support:</div>
+        <h3>…mission planning</h3>
+        <p>Provide analytical intelligence to commanders for threat assessment and operational decision-making.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Defense Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="home" data-title="For Home" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">For Home</h1>
+      <div class="tags"><span class="tag">Personal</span><span class="tag">Wellness</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for For Home</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…food and beverages</h3>
+        <p>Make sure your family isn't consuming pesticides, hormones, food dyes, and other harmful additives.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with fermented drinks</h3>
+        <p>Don't be stupid: If you're gonna make your own beer, wine, whiskey, or hooch, at least make sure you won't go blind.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l4 4 4-4"/></svg></div>
+        <div class="usecase-label">Invent:</div>
+        <h3>…new beverages</h3>
+        <p>Launching a CPG Beverage Brand from home is easier than ever.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="usecase-label">Identify:</div>
+        <h3>…beauty ingredients</h3>
+        <p>Check your fragrances, skincare, and cosmetic products' ingredients.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your For Home Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="k12-education" data-title="K–12 Education" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">K–12 Education</h1>
+      <div class="tags"><span class="tag">Teaching</span><span class="tag">STEM</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for K–12 Education</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+        <div class="usecase-label">Teach:</div>
+        <h3>…real analytical science</h3>
+        <p>Give students hands-on experience with the same instrumentation used by professional scientists and engineers.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="usecase-label">Inspire:</div>
+        <h3>…curiosity</h3>
+        <p>Let students test food, water, soil, and everyday materials — making chemistry tangible and relevant to their lives.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M3 9h18"/></svg></div>
+        <div class="usecase-label">Simplify:</div>
+        <h3>…lab management</h3>
+        <p>Replace fragile, complex lab equipment with a single device that's safe, durable, and easy to operate.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="usecase-label">Prepare:</div>
+        <h3>…the next generation</h3>
+        <p>Expose students to analytical chemistry concepts and workflows they'll encounter in STEM careers.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your K–12 Education Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="municipal" data-title="Municipal" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Municipal</h1>
+      <div class="tags"><span class="tag">Water</span><span class="tag">Compliance</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Municipal</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…drinking water quality</h3>
+        <p>Monitor contaminants, disinfection byproducts, pH, and mineral content at the source — protecting public health in real-time.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…wastewater treatment</h3>
+        <p>Track effluent quality and treatment efficiency to ensure environmental compliance before discharge.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="usecase-label">Respond:</div>
+        <h3>…to contamination events</h3>
+        <p>Deploy rapid on-site analysis during water quality emergencies to identify threats and guide response efforts.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <div class="usecase-label">Report:</div>
+        <h3>…compliance data</h3>
+        <p>Generate the analytical records needed for EPA, state, and local regulatory reporting requirements.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Municipal Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="nutrition-supplements" data-title="Nutrition & Supplements" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Nutrition & Supplements</h1>
+      <div class="tags"><span class="tag">Purity</span><span class="tag">Potency</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Nutrition & Supplements</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…ingredient purity</h3>
+        <p>Verify that raw materials meet identity, potency, and purity specifications before they enter production.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Verify:</div>
+        <h3>…label claims</h3>
+        <p>Confirm that finished products contain exactly what the label says — no more, no less.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="usecase-label">Screen:</div>
+        <h3>…for contaminants</h3>
+        <p>Detect heavy metals, solvents, pesticides, and adulterants that could compromise product safety.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…formulation</h3>
+        <p>Use analytical data to refine dosage forms, improve bioavailability, and enhance product stability.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Nutrition Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="oil-gas" data-title="Oil & Gas" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Oil & Gas</h1>
+      <div class="tags"><span class="tag">Upstream</span><span class="tag">Midstream</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Oil & Gas</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…crude composition</h3>
+        <p>Analyze drilling fluids, produced water, and crude oil composition at the wellhead — no more waiting for distant lab results.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="usecase-label">Monitor:</div>
+        <h3>…production chemistry</h3>
+        <p>Track corrosion indicators, scale-forming ions, and H₂S levels to protect equipment and optimize extraction.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…treatment programs</h3>
+        <p>Use real-time data to adjust chemical treatments, reduce downtime, and lower operating costs.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with environmental standards</h3>
+        <p>Document water discharge quality and emissions data for regulatory reporting.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Oil Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="research" data-title="Research" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Research</h1>
+      <div class="tags"><span class="tag">Field Work</span><span class="tag">Academic</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Research</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…samples in the field</h3>
+        <p>Perform analytical measurements at remote sites, field stations, and during expeditions — without transporting samples back to a lab.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with new methods</h3>
+        <p>Prototype and validate new analytical workflows on a compact, flexible platform.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="usecase-label">Accelerate:</div>
+        <h3>…discovery</h3>
+        <p>Get results in minutes instead of days, enabling faster iteration and more productive research cycles.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="usecase-label">Collaborate:</div>
+        <h3>…across disciplines</h3>
+        <p>Share standardized analytical data with collaborators regardless of their lab infrastructure.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Research Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="university-education" data-title="University Education" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">University Education</h1>
+      <div class="tags"><span class="tag">Academic</span><span class="tag">Research</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for University Education</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+        <div class="usecase-label">Teach:</div>
+        <h3>…advanced analytical methods</h3>
+        <p>Provide undergraduate and graduate students with hands-on experience in chromatography, spectroscopy, and electrochemistry.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M3 9h18"/></svg></div>
+        <div class="usecase-label">Equip:</div>
+        <h3>…teaching labs affordably</h3>
+        <p>Deploy multiple TinyLab units for a fraction of the cost of traditional benchtop instrumentation.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="usecase-label">Enable:</div>
+        <h3>…student research</h3>
+        <p>Give students the tools to pursue independent research projects with professional-grade analytical capabilities.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+        <div class="usecase-label">Bridge:</div>
+        <h3>…theory and practice</h3>
+        <p>Connect classroom concepts to real-world analytical workflows used across dozens of industries.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your University Education Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+
+<article class="ind-detail" id="winemaking" data-title="Winemaking & Brewing" hidden>
+<div class="page-wrap">
+  <div class="sheet">
+    <a href="../#industries" class="back-link">← Back to home</a>
+    <div class="sheet-head sheet-head--left">
+      <h1 class="display-xl">Winemaking & Brewing</h1>
+      <div class="tags"><span class="tag">QC</span><span class="tag">Fermentation</span></div>
+    </div>
+    <div class="sheet-block">
+      <span class="sheet-label">How Can You Use TinyLab?</span>
+      <h2 class="display-lg">TinyLab for Winemaking & Brewing</h2>
+      <div class="usecases-grid">
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="usecase-label">Test:</div>
+        <h3>…fermentation parameters</h3>
+        <p>Monitor sugar content, pH, acidity, SO₂ levels, and volatile compounds in real-time — right at the tank or barrel.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 3h6v4.5L18 15a2 2 0 01-2 2H8a2 2 0 01-2-2l3-7.5V3z"/><path d="M9 3h6"/></svg></div>
+        <div class="usecase-label">Experiment:</div>
+        <h3>…with new blends</h3>
+        <p>Try new grape varieties, hop combinations, or yeast strains and measure the results immediately, without waiting days for lab reports.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div>
+        <div class="usecase-label">Optimize:</div>
+        <h3>…your process</h3>
+        <p>Track batch consistency over time and use data to refine your techniques, reduce waste, and improve product quality.</p>
+      </div>
+      <div class="usecase-card fade-in">
+        <div class="usecase-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="usecase-label">Comply:</div>
+        <h3>…with regulations</h3>
+        <p>Generate the analytical records you need for regulatory compliance and quality certifications.</p>
+      </div>
+        </div>
+    </div>
+    <div class="callout callout--accent ind-cta">
+      <h2 class="display-lg">Bring TinyLab to Your Winemaking Operations</h2>
+      <p class="callout-text">See how TinyLab can transform your analytical workflow.</p>
+      <div class="btn-row">
+        <a href="../preorder/" class="btn btn-primary">Pre-Order Now →</a>
+        <a href="../#specs" class="btn btn-ghost">View Specs</a>
+      </div>
+    </div>
+  </div>
+</div>
+</article>
+</div>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-left"><a href="./#terms">Terms of Service</a><span>·</span><a href="./#privacy">Privacy Policy</a><span>·</span><span>© 2026 The Analysis Company</span><span>·</span><a href="mailto:bliker@anaco.com">Contact Us</a></div>
+  
+</div></footer>
+
+<script>
+function loadBg(el) {
+  if (!el || el.dataset.bgLoaded) return;
+  const url = el.dataset.bg;
+  if (!url) return;
+  el.style.backgroundImage = "url('" + url + "')";
+  el.dataset.bgLoaded = '1';
+}
+
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+const gridImgObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      loadBg(e.target);
+      gridImgObserver.unobserve(e.target);
+    }
+  });
+}, { rootMargin: '300px 0px' });
+document.querySelectorAll('#industries-list .ind-card-image[data-bg]').forEach(el => gridImgObserver.observe(el));
+
+function showIndustryView() {
+  const hash = (location.hash || '').slice(1);
+  const list = document.getElementById('industries-list');
+  const listCta = document.getElementById('industries-list-cta');
+  const details = document.querySelectorAll('.ind-detail');
+  const detail = hash ? document.getElementById(hash) : null;
+  if (detail) {
+    list.hidden = true;
+    if (listCta) listCta.hidden = true;
+    details.forEach(d => { d.hidden = d !== detail; });
+    document.title = detail.dataset.title + ' — Anaco';
+    window.scrollTo(0, 0);
+    detail.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  } else {
+    location.replace('../#industries');
+  }
+}
+window.addEventListener('hashchange', showIndustryView);
+showIndustryView();
+</script>
+</body>
+</html>
