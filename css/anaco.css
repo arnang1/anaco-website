@@ -33,6 +33,50 @@
   --font-body: var(--font-display);
   --nav-h: 72px;
   --nav-edge-inset: clamp(16px, 2.8vw, 28px);
+  /* Page box rhythm — vw/% track the layout viewport when zooming */
+  --page-edge-inset: 5%;
+  --stagger-box-width: 75vw;
+  --section-stack-gap: 7%;
+  /* Shared with .sheet — keeps float-header rise and section gaps in sync when zooming */
+  --sheet-pad: clamp(36px, 5vw, 64px);
+  --layer-hang: clamp(12px, 2vw, 20px);
+  --float-header-lift: clamp(12px, 2vw, 22px);
+  --float-header-lift-more: clamp(22px, 3.2vw, 36px);
+  --float-header-overhang: calc(
+    var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more) + 0.5rem
+  );
+  --home-section-stack-gap: max(7%, var(--float-header-overhang));
+  /* Small/medium copy — bumped on home + preorder via main.home / main.site-page-main */
+  --copy-eyebrow: clamp(0.8rem, 1.15vw, 1rem);
+  --copy-sheet-label: clamp(0.8rem, 1.1vw, 0.95rem);
+  --copy-body-lg: clamp(1.05rem, 1.6vw, 1.2rem);
+  --copy-lead: clamp(1rem, 1.5vw, 1.125rem);
+  --copy-sheet-lead: clamp(1.1rem, 1.75vw, 1.35rem);
+  --copy-float-kicker: clamp(0.7rem, 1vw, 0.8rem);
+  --copy-float-text: clamp(0.9rem, 1.35vw, 1.05rem);
+  --copy-float-text-compact: clamp(0.78rem, 1.05vw, 0.88rem);
+  --copy-float-kicker-lg: clamp(0.84rem, 1.2vw, 0.96rem);
+  --copy-float-text-lg: clamp(1.08rem, 1.62vw, 1.26rem);
+  --copy-link: 0.9375rem;
+  --copy-btn: 0.9rem;
+  --copy-hero-tagline: clamp(1.1rem, 1.85vw, 1.35rem);
+  --copy-callout: clamp(1.05rem, 1.5vw, 1.2rem);
+  --copy-pillar: clamp(1rem, 1.4vw, 1.1rem);
+  --copy-nav: 1rem;
+  --copy-xs: 0.75rem;
+  --copy-sm: 0.875rem;
+  --copy-sm2: 0.8125rem;
+  --copy-2xs: 0.6875rem;
+  --copy-micro: 0.625rem;
+  --copy-form-input: 0.875rem;
+  --copy-form-body: 0.9375rem;
+  --copy-form-label: 0.6875rem;
+  --copy-equip-cat: clamp(0.85rem, 1.2vw, 1rem);
+  --copy-site-body-lg: clamp(1rem, 1.4vw, 1.1rem);
+  --copy-usecase-p: clamp(0.78rem, 1.05vw, 0.85rem);
+  --copy-usecase-h3: clamp(0.9rem, 1.3vw, 1.05rem);
+  --copy-industries-float-text: clamp(0.88rem, 1.2vw, 1.02rem);
+  --copy-footer: 0.75rem;
   --max: 1280px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --reveal-duration: 0.95s;
@@ -44,6 +88,44 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: var(--radius); }
+/* Landing + preorder: one step up on small/medium copy (display + intro unchanged) */
+main.home,
+body.site-page main.site-page-main,
+body:has(main.home) .footer {
+  --copy-eyebrow: clamp(0.875rem, 1.25vw, 1.0625rem);
+  --copy-sheet-label: clamp(0.875rem, 1.2vw, 1.0625rem);
+  --copy-body-lg: clamp(1.125rem, 1.75vw, 1.3125rem);
+  --copy-lead: clamp(1.0625rem, 1.6vw, 1.2rem);
+  --copy-sheet-lead: clamp(1.2rem, 1.9vw, 1.45rem);
+  --copy-float-kicker: clamp(0.78rem, 1.1vw, 0.9rem);
+  --copy-float-text: clamp(1rem, 1.45vw, 1.125rem);
+  --copy-float-text-compact: clamp(0.875rem, 1.15vw, 0.975rem);
+  --copy-float-kicker-lg: clamp(0.9rem, 1.3vw, 1.02rem);
+  --copy-float-text-lg: clamp(1.125rem, 1.72vw, 1.34rem);
+  --copy-link: 1rem;
+  --copy-btn: 0.975rem;
+  --copy-hero-tagline: clamp(1.2rem, 2vw, 1.45rem);
+  --copy-callout: clamp(1.125rem, 1.65vw, 1.3125rem);
+  --copy-pillar: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  --copy-nav: 1.0625rem;
+  --copy-xs: 0.8125rem;
+  --copy-sm: 0.9375rem;
+  --copy-sm2: 0.875rem;
+  --copy-2xs: 0.75rem;
+  --copy-micro: 0.6875rem;
+  --copy-form-input: 0.9375rem;
+  --copy-form-body: 1rem;
+  --copy-form-label: 0.75rem;
+  --copy-equip-cat: clamp(0.925rem, 1.3vw, 1.0625rem);
+  --copy-site-body-lg: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  --copy-usecase-p: clamp(0.875rem, 1.15vw, 0.9375rem);
+  --copy-usecase-h3: clamp(0.975rem, 1.4vw, 1.125rem);
+  --copy-industries-float-text: clamp(0.9375rem, 1.3vw, 1.1rem);
+  --copy-footer: 0.8125rem;
+}
+body:has(main.home) .nav-links a:not(.nav-cta) {
+  font-size: var(--copy-nav);
+}
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-display);
@@ -229,7 +311,7 @@ body {
 }
 .body-lg {
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: var(--copy-body-lg);
   line-height: 1.55;
   color: var(--text-2);
   font-weight: 600;
@@ -266,7 +348,7 @@ body {
 }
 .eyebrow,
 .section-eyebrow {
-  font-size: clamp(0.8rem, 1.15vw, 1rem);
+  font-size: var(--copy-eyebrow);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: var(--accent-box-pad-y) var(--accent-box-pad-x);
@@ -301,11 +383,11 @@ body {
 .card-link,
 .link-neon,
 .read-more-btn {
-  font-size: 0.9375rem;
+  font-size: var(--copy-link);
 }
 .lead {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: var(--copy-lead);
   line-height: 1.65;
   color: var(--text-2);
   font-weight: 600;
@@ -372,7 +454,7 @@ html:not(.reveal-lite) .text-rotator-word {
   gap: 8px;
   padding: 14px 28px;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: var(--copy-btn);
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -399,31 +481,22 @@ html:not(.reveal-lite) .text-rotator-word {
 
 /* ── HOME (Edison-style sheets) ── */
 .home-wrap {
-  --home-wrap-max: var(--max);
-  --home-wrap-inset: clamp(20px, 4vw, 40px);
+  --home-wrap-inset: var(--page-edge-inset);
   width: 100%;
-  max-width: var(--home-wrap-max);
+  max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--home-wrap-inset);
 }
-/* Stagger: left-aligned wraps bleed to viewport left; right-aligned to viewport right */
-.home .hero .home-wrap,
+/* Stagger: ~75% of viewport, flush to one edge; opposite edge keeps ~25% gutter */
 .home #product .home-wrap,
 .home #facilities .home-wrap,
 .home #newsletter .home-wrap {
+  width: var(--stagger-box-width);
+  max-width: none;
   margin-left: 0;
   margin-right: auto;
   padding-left: 0;
-  padding-right: clamp(48px, 9vw, 120px);
-}
-.home #product .home-wrap {
-  --home-wrap-max: min(1040px, calc(100% - clamp(56px, 12vw, 170px)));
-}
-.home #facilities .home-wrap {
-  --home-wrap-max: min(1160px, calc(100% - clamp(54px, 11vw, 165px)));
-}
-.home #newsletter .home-wrap {
-  --home-wrap-max: min(880px, calc(100% - clamp(88px, 17vw, 260px)));
+  padding-right: 0;
 }
 .home #product .sheet,
 .home #facilities .sheet,
@@ -433,19 +506,12 @@ html:not(.reveal-lite) .text-rotator-word {
 .home #industries .home-wrap,
 .home #specs .home-wrap,
 .home #contact .home-wrap {
+  width: var(--stagger-box-width);
+  max-width: none;
   margin-left: auto;
   margin-right: 0;
-  padding-left: clamp(48px, 9vw, 120px);
+  padding-left: 0;
   padding-right: 0;
-}
-.home #industries .home-wrap {
-  --home-wrap-max: min(1240px, calc(100% - clamp(72px, 15vw, 220px)));
-}
-.home #specs .home-wrap {
-  --home-wrap-max: min(1180px, calc(100% - clamp(64px, 13vw, 190px)));
-}
-.home #contact .home-wrap {
-  --home-wrap-max: min(1120px, calc(100% - clamp(60px, 12vw, 180px)));
 }
 .home #industries .sheet,
 .home #specs .sheet,
@@ -453,11 +519,9 @@ html:not(.reveal-lite) .text-rotator-word {
   border-right: none;
 }
 .home-section {
-  padding: clamp(48px, 8vw, 88px) 0;
+  padding: 0 0 var(--home-section-stack-gap);
 }
 .sheet {
-  --sheet-pad: clamp(36px, 5vw, 64px);
-  --layer-hang: clamp(12px, 2vw, 20px);
   position: relative;
   background: var(--paper);
   border: 1px solid var(--outline);
@@ -465,8 +529,6 @@ html:not(.reveal-lite) .text-rotator-word {
   overflow: visible;
 }
 .sheet-block {
-  --sheet-pad: clamp(36px, 5vw, 64px);
-  --layer-hang: clamp(12px, 2vw, 20px);
   position: relative;
   overflow: visible;
 }
@@ -594,7 +656,7 @@ html:not(.reveal-lite) .text-rotator-word {
 .sheet-label {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  font-size: var(--copy-sheet-label);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -606,7 +668,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 .sheet-lead {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.75vw, 1.35rem);
+  font-size: var(--copy-sheet-lead);
   line-height: 1.5;
   color: var(--text-2);
   font-weight: 600;
@@ -771,7 +833,7 @@ html:not(.reveal-lite) .text-rotator-word {
   line-height: 1.1;
 }
 .layer-float--compact .layer-float-text {
-  font-size: clamp(0.78rem, 1.05vw, 0.88rem);
+  font-size: var(--copy-float-text-compact);
   line-height: 1.4;
 }
 .layer-float--lg {
@@ -780,13 +842,13 @@ html:not(.reveal-lite) .text-rotator-word {
   gap: 0.78rem;
 }
 .layer-float--lg .layer-kicker {
-  font-size: clamp(0.84rem, 1.2vw, 0.96rem);
+  font-size: var(--copy-float-kicker-lg);
 }
 .layer-float--lg .layer-float-title {
   font-size: clamp(1.38rem, 2.64vw, 1.98rem);
 }
 .layer-float--lg .layer-float-text {
-  font-size: clamp(1.08rem, 1.62vw, 1.26rem);
+  font-size: var(--copy-float-text-lg);
 }
 /* Hang past outer sheet border (offset includes sheet padding) */
 .layer-float--hang-r {
@@ -804,12 +866,29 @@ html:not(.reveal-lite) .text-rotator-word {
 .layer-float--header {
   top: calc(-1 * (var(--layer-hang) + var(--sheet-pad)));
   bottom: auto;
+  --float-header-pad-block-start: clamp(14px, 2vw, 22px);
+  --float-header-pad-block-end: clamp(11px, 1.55vw, 17px);
+  --float-header-pad-inline: clamp(18px, 2.5vw, 28px);
+  padding-block: var(--float-header-pad-block-start) var(--float-header-pad-block-end);
+  padding-inline: var(--float-header-pad-inline);
+  gap: 0.48rem;
+}
+.layer-float--header .layer-float-text {
+  line-height: 1.38;
+}
+.layer-float--header .layer-float-text:last-child {
+  margin-block-end: -0.1em;
+}
+.layer-float--header.layer-float--lg {
+  --float-header-pad-block-start: clamp(18px, 2.5vw, 26px);
+  --float-header-pad-block-end: clamp(14px, 2vw, 21px);
+  gap: 0.55rem;
 }
 .layer-float--header-up {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + clamp(12px, 2vw, 22px)));
+  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift)));
 }
 .layer-float--header-up-more {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + clamp(22px, 3.2vw, 36px)));
+  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));
 }
 /* Staggered home: header on opposite outer corner (hang inward, away from viewport edge) */
 @media (min-width: 901px) {
@@ -890,7 +969,7 @@ html:not(.reveal-lite) .text-rotator-word {
   display: block;
   padding: 14px 16px;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: var(--copy-nav);
   font-weight: 700;
   color: var(--text);
 }
@@ -940,7 +1019,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 #industries .usecase-icon svg { width: 1.125rem; height: 1.125rem; }
 #industries .usecase-label {
-  font-size: 0.625rem;
+  font-size: var(--copy-micro);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
@@ -949,7 +1028,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 #industries .usecase-card h3 {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  font-size: var(--copy-usecase-h3);
   font-weight: 700;
   margin: 0 0 0.35rem;
   color: var(--text);
@@ -957,7 +1036,7 @@ html:not(.reveal-lite) .text-rotator-word {
 #industries .usecase-card p {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(0.78rem, 1.05vw, 0.85rem);
+  font-size: var(--copy-usecase-p);
   font-weight: 600;
   line-height: 1.5;
   color: var(--text-2);
@@ -968,26 +1047,27 @@ html:not(.reveal-lite) .text-rotator-word {
   #industries .usecases-grid .usecase-card:last-child { border-bottom: none; }
 }
 #industries .layer-float--header-up {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + clamp(18px, 2.8vw, 32px)));
+  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));
 }
 #industries .layer-float {
   max-width: min(24rem, 90%);
-  padding: clamp(16px, 2.4vw, 26px) clamp(18px, 2.6vw, 28px);
-  gap: 0.55rem;
+  padding-block: clamp(14px, 2vw, 20px) clamp(11px, 1.55vw, 17px);
+  padding-inline: clamp(18px, 2.6vw, 28px);
+  gap: 0.45rem;
 }
 #industries .layer-float-title {
   font-size: clamp(1.08rem, 1.85vw, 1.38rem);
   line-height: 1.2;
 }
 #industries .layer-float-text {
-  font-size: clamp(0.88rem, 1.2vw, 1.02rem);
-  line-height: 1.5;
+  font-size: var(--copy-industries-float-text);
+  line-height: 1.38;
 }
 #facilities .layer-float--header {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + clamp(20px, 3vw, 34px)));
+  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));
 }
 #product .sheet.sheet--has-float-header > .layer-float {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + clamp(22px, 3.2vw, 36px)));
+  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));
 }
 #product .sheet--has-float-header > .layer-float + .viewer-frame,
 #product .sheet--has-float-header > .layer-float + #viewer-container {
@@ -1003,11 +1083,9 @@ html:not(.reveal-lite) .text-rotator-word {
 #specs .sheet--has-float-header > .layer-float + .specs-grid {
   margin-top: clamp(6rem, 10vw, 8.25rem);
 }
-#specs.home-section {
-  padding-top: clamp(32px, 5vw, 56px);
-}
+#specs.home-section,
 #newsletter.home-section--compact {
-  padding: clamp(32px, 5vw, 56px) 0;
+  padding: 0 0 var(--home-section-stack-gap);
 }
 #newsletter .sheet--compact {
   --sheet-pad: clamp(22px, 3vw, 36px);
@@ -1017,16 +1095,17 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 #newsletter .layer-float--header {
   max-width: min(21rem, 92%);
-  padding: clamp(14px, 2.2vw, 22px);
-  gap: 0.5rem;
+  padding-block: clamp(12px, 1.9vw, 18px) clamp(10px, 1.4vw, 15px);
+  padding-inline: clamp(14px, 2.2vw, 22px);
+  gap: 0.42rem;
 }
 #newsletter .layer-float--header .layer-float-title {
-  font-size: clamp(1.02rem, 1.65vw, 1.22rem);
+  font-size: clamp(1.08rem, 1.75vw, 1.3rem);
   line-height: 1.22;
 }
 #newsletter .layer-float--header .layer-float-text {
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
-  line-height: 1.5;
+  font-size: var(--copy-float-text);
+  line-height: 1.38;
   max-width: 19rem;
 }
 #newsletter .sheet--has-float-header > .layer-float + .newsletter-body {
@@ -1051,16 +1130,16 @@ html:not(.reveal-lite) .text-rotator-word {
   min-width: 0;
   max-width: 14rem;
   padding: 0.45rem 0.65rem;
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
 }
 #newsletter .newsletter-row .btn {
   flex: 0 0 auto;
   padding: 0.45rem 0.85rem;
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
 }
 #newsletter .newsletter-success {
   margin-top: 0.65rem;
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
 }
 #newsletter .newsletter-success p {
   margin: 0;
@@ -1079,7 +1158,7 @@ html:not(.reveal-lite) .text-rotator-word {
   display: inline-block;
   align-self: flex-start;
   font-family: var(--font-display);
-  font-size: clamp(0.7rem, 1vw, 0.8rem);
+  font-size: var(--copy-float-kicker);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1105,7 +1184,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 .layer-float-text {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.35vw, 1.05rem);
+  font-size: var(--copy-float-text);
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -1170,7 +1249,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 .pillar-text {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  font-size: var(--copy-pillar);
   line-height: 1.55;
   color: var(--text-2);
   font-weight: 600;
@@ -1258,7 +1337,7 @@ html:not(.reveal-lite) .text-rotator-word {
 }
 .callout-text {
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-size: var(--copy-callout);
   line-height: 1.5;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -1321,6 +1400,11 @@ html.intro-pending .home-intro {
   z-index: 2;
   pointer-events: none;
 }
+.home-intro.is-flying .home-intro__fly-portal .intro-fly,
+.home-intro.is-flying .home-intro__fly-portal .intro-fly--divider,
+.home-intro.is-flying .home-intro__lab-fly-shell {
+  will-change: transform;
+}
 .home-intro__fly-portal .intro-fly {
   visibility: visible;
   opacity: 1;
@@ -1340,12 +1424,12 @@ html.intro-pending .intro-target-hidden {
 }
 html.intro-pending.intro-reveal .intro-page-fade {
   opacity: 1;
-  transition: opacity 0.62s ease-out;
+  transition: none;
   pointer-events: auto;
 }
 html.intro-pending.intro-reveal .home-intro__backdrop {
   opacity: 0;
-  transition: opacity 0.62s ease-out;
+  transition: opacity 0.45s ease-out;
 }
 html.intro-done .intro-page-fade {
   opacity: 1;
@@ -1374,7 +1458,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-rows: repeat(3, auto);
   row-gap: 0.14em;
-  column-gap: clamp(2rem, 10vw, 6rem);
+  column-gap: clamp(3.5rem, 16vw, 10rem);
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 3.2vw, 2.1rem);
   font-weight: 600;
@@ -1391,6 +1475,10 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   transition:
     opacity 0.55s var(--reveal-opacity-ease),
     transform 0.5s var(--reveal-ease);
+  will-change: opacity, transform;
+}
+.home-intro.is-active:not(.is-flying) .home-intro__line.is-visible {
+  will-change: auto;
 }
 .home-intro__line.is-visible {
   opacity: 1;
@@ -1475,6 +1563,45 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 .home-intro__sample {
   color: var(--accent);
   white-space: nowrap;
+  -webkit-text-stroke: 0.4px rgba(10, 10, 10, 0.4);
+  paint-order: stroke fill;
+}
+@supports not ((-webkit-text-stroke: 0.4px) or (text-stroke: 0.4px)) {
+  .home-intro__lab,
+  .home-intro__sample {
+    text-shadow:
+      0.45px 0 0 rgba(10, 10, 10, 0.38),
+      -0.45px 0 0 rgba(10, 10, 10, 0.38),
+      0 0.45px 0 rgba(10, 10, 10, 0.38),
+      0 -0.45px 0 rgba(10, 10, 10, 0.38);
+  }
+}
+.home-intro__lab-trail {
+  position: fixed;
+  z-index: 10002;
+  pointer-events: none;
+  margin: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  opacity: 0;
+  transform-origin: 100% 50%;
+  animation: home-intro-lab-trail 0.4s ease-out forwards;
+}
+@keyframes home-intro-lab-trail {
+  0% {
+    opacity: var(--trail-opacity, 0.5);
+    transform: translate3d(0, 0, 0) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--trail-drift, -5px), 0, 0) scaleX(0.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-intro__lab-trail {
+    display: none;
+  }
 }
 .home-intro__lab-slot {
   display: inline-block;
@@ -1597,7 +1724,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 /* ── HERO — full bleed top, left, right; bottom spacing unchanged ── */
 .hero {
   min-height: 100vh;
-  padding: 0 0 clamp(48px, 6vw, 72px);
+  padding: 0 0 var(--section-stack-gap);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1625,6 +1752,24 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hero-device-stage {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+}
+.hero-device-hatch {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: translate(12px, 12px);
+  border: 1px solid var(--outline);
+  pointer-events: none;
+}
+.hero-device-stage .media-frame--device {
+  position: relative;
+  z-index: 1;
 }
 /* ── IMAGE OUTLINE (thin black border on wrapper — avoids clipped edges) ── */
 .media-frame {
@@ -1693,7 +1838,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
   color: var(--text-3);
   pointer-events: none;
 }
@@ -1707,7 +1852,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   box-shadow: var(--float-shadow);
 }
 .home .viewer-hud-label {
-  font-size: 0.6875rem;
+  font-size: var(--copy-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--neon);
@@ -1724,7 +1869,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   border: 1px solid var(--outline);
   background: var(--paper);
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: var(--copy-xs);
   font-weight: 600;
   color: var(--text-2);
   cursor: pointer;
@@ -1760,7 +1905,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   border: 1px solid var(--outline);
   padding: 0.5rem 1.25rem;
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
   font-weight: 700;
 }
 .home .specs-grid {
@@ -1821,7 +1966,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   align-self: start;
   justify-self: end;
   flex-shrink: 0;
-  font-size: 0.625rem;
+  font-size: var(--copy-micro);
   font-weight: 800;
   letter-spacing: 0.05em;
   line-height: 1.1;
@@ -1842,7 +1987,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--outline);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
   font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--text-2);
@@ -1857,7 +2002,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 .home .sub-list li {
   padding: 0.25rem 0;
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
   color: var(--text-3);
   background: transparent;
   position: relative;
@@ -1904,24 +2049,25 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 /* ── INNER PAGES (same Edison sheets as home) ── */
 .page-wrap {
-  max-width: var(--max);
+  width: var(--stagger-box-width);
+  max-width: none;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 40px);
+  padding: 0;
 }
 .site-page {
   padding-top: var(--nav-h);
 }
 .page-section {
-  padding: clamp(40px, 6vw, 72px) 0;
+  padding: 0 0 var(--section-stack-gap);
 }
 .page-section--flush {
   padding-top: 0;
 }
 .site-page .page-section--flush:has(+ #preorder-main) {
-  padding-bottom: clamp(10px, 1.5vw, 18px);
+  padding-bottom: var(--section-stack-gap);
 }
 .site-page #preorder-main.page-section {
-  padding-top: clamp(10px, 1.5vw, 18px);
+  padding-top: 0;
 }
 .site-page .sheet--top {
   padding-top: clamp(48px, 8vw, 80px);
@@ -1936,7 +2082,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   border-top: 1px solid var(--outline);
 }
 .site-page .anchor-nav a {
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
   font-weight: 700;
   color: var(--text-3);
   text-decoration: none;
@@ -1953,7 +2099,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
   font-weight: 700;
   color: var(--text-3);
   text-decoration: none;
@@ -1965,7 +2111,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 .site-page .back-link:hover { color: var(--text); }
 .site-page .body-lg {
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  font-size: var(--copy-site-body-lg);
   line-height: 1.65;
   color: var(--text-2);
   margin-bottom: 1rem;
@@ -2044,7 +2190,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 .home .facility-body p,
 .site-page .facility-body p {
-  font-size: 0.9375rem;
+  font-size: var(--copy-form-body);
   line-height: 1.7;
   color: var(--text-2);
   margin-bottom: 1rem;
@@ -2052,7 +2198,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 .home .equip-category,
 .site-page .equip-category {
   font-family: var(--font-display);
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-size: var(--copy-equip-cat);
   font-weight: 700;
   margin: 1.25rem 0 0.75rem;
   display: inline-block;
@@ -2068,7 +2214,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 .home .equip-item,
 .site-page .equip-item {
   padding: 0.5rem 0.75rem;
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
   color: var(--text-2);
   font-weight: 600;
   border-right: 1px solid var(--outline);
@@ -2096,7 +2242,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 .home .form-group label,
 .site-page .form-group label {
   display: block;
-  font-size: 0.6875rem;
+  font-size: var(--copy-form-label);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2113,7 +2259,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   padding: 0.65rem 0.85rem;
   border: 1px solid var(--outline);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: var(--copy-form-input);
   color: var(--text);
   background: var(--paper);
   outline: none;
@@ -2135,7 +2281,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   background: var(--neon);
   color: #0a0a0a;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: var(--copy-btn);
   font-weight: 700;
   cursor: pointer;
   margin-top: 0.5rem;
@@ -2155,7 +2301,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   padding: 0.65rem 0.85rem;
   border: 1px solid var(--outline);
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: var(--copy-form-input);
 }
 .home .empty-state,
 .site-page .empty-state {
@@ -2163,7 +2309,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   padding: clamp(24px, 3vw, 36px);
   border: 1px dashed var(--outline);
   text-align: center;
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
   color: var(--text-3);
   background: transparent;
   box-shadow: none;
@@ -2451,13 +2597,13 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   justify-content: center;
 }
 .site-page .info-item h4 {
-  font-size: 0.9375rem;
+  font-size: var(--copy-form-body);
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
 .site-page .info-item p {
   font-family: var(--font-display);
-  font-size: 0.8125rem;
+  font-size: var(--copy-sm2);
   font-weight: 600;
   line-height: 1.6;
   letter-spacing: 0.01em;
@@ -2467,7 +2613,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--outline);
-  font-size: 0.875rem;
+  font-size: var(--copy-sm);
   color: var(--text-2);
 }
 .site-page .form-success {
@@ -2476,6 +2622,14 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   padding: 2rem 1rem;
 }
 .site-page .form-success.show { display: block !important; }
+body.site-page main.site-page-main .form-success p {
+  font-family: var(--font-display);
+  font-size: var(--copy-body-lg);
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--text-2);
+}
 .home #inquirySuccess:not(.show),
 .site-page #contactSuccess:not(.show),
 .site-page #mfgSuccess:not(.show) {
@@ -2483,6 +2637,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 .home .newsletter-success {
   margin-top: 1rem;
+  font-size: var(--copy-sm);
   color: var(--neon);
   font-weight: 700;
 }
@@ -2509,7 +2664,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
   margin-bottom: 1.5rem;
 }
 .site-page .legal-sheet p {
-  font-size: 0.9375rem;
+  font-size: var(--copy-form-body);
   line-height: 1.75;
   color: var(--text-2);
 }
@@ -2525,7 +2680,7 @@ html.intro-done nav.nav .nav-logo .brand-mark {
 }
 .site-page .form-note {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: var(--copy-xs);
   color: var(--text-3);
   margin-top: 0.875rem;
 }
@@ -2618,7 +2773,7 @@ section.legal-page .legal-sheet {
 .hero-tagline {
   margin: 0 0 1.5rem;
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.85vw, 1.35rem);
+  font-size: var(--copy-hero-tagline);
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -2989,7 +3144,7 @@ section.legal-page .legal-sheet {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  font-size: 0.75rem;
+  font-size: var(--copy-footer);
   color: var(--text-3);
 }
 .footer-inner a {
@@ -3111,7 +3266,7 @@ html:not(.reveal-lite) .blur-in.is-revealing {
   border: 1px solid var(--border-hover);
 }
 .btn-outline:hover { border-color: var(--text-3); background: var(--surface); }
-.btn-lg { padding: 16px 40px; font-size: 1rem; width: 100%; justify-content: center; }
+.btn-lg { padding: 16px 40px; font-size: var(--copy-nav); width: 100%; justify-content: center; }
 
 .content-section, .section { max-width: var(--max); margin: 0 auto; padding: 80px clamp(20px, 4vw, 40px); }
 #industries-list .section-eyebrow,
@@ -3251,11 +3406,12 @@ html:not(.reveal-lite) .blur-in.is-revealing {
   .home #facilities .home-wrap,
   .home #contact .home-wrap,
   .home #newsletter .home-wrap {
-    --home-wrap-max: var(--max);
+    width: var(--stagger-box-width);
+    max-width: none;
     margin-left: auto;
     margin-right: auto;
-    padding-left: var(--home-wrap-inset);
-    padding-right: var(--home-wrap-inset);
+    padding-left: 0;
+    padding-right: 0;
   }
   .home #product .sheet,
   .home #facilities .sheet,

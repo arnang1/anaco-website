@@ -29,6 +29,34 @@
 
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
 
+  function buildFlyTransform(x, y, scaleX = 1, scaleY = 1) {
+    const tx = Math.round(x);
+    const ty = Math.round(y);
+    if (scaleX === 1 && scaleY === 1) {
+      return `translate3d(${tx}px,${ty}px,0)`;
+    }
+    return `translate3d(${tx}px,${ty}px,0) scale(${scaleX},${scaleY})`;
+  }
+
+  function onTransitionEnd(el, propertyName, ms, buffer = 80) {
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        el.removeEventListener('transitionend', onEnd);
+        resolve();
+      };
+      const onEnd = (e) => {
+        if (e.target !== el) return;
+        if (e.propertyName !== propertyName) return;
+        finish();
+      };
+      el.addEventListener('transitionend', onEnd);
+      window.setTimeout(finish, ms + buffer);
+    });
+  }
+
   function finishImmediate() {
     const html = document.documentElement;
     html.classList.remove('intro-pending', 'intro-reveal');
@@ -91,16 +119,65 @@
     ].join(';');
   }
 
+  function spawnLabTrail(portal, box, strength, dirX) {
+    const trail = document.createElement('span');
+    trail.className = 'home-intro__lab-trail';
+    trail.setAttribute('aria-hidden', 'true');
+    const behind = dirX >= 0 ? -1 : 1;
+    const width = 4 + strength * 5;
+    const lag = 5 + strength * 7;
+    trail.style.left = `${box.left + behind * lag}px`;
+    trail.style.top = `${box.top + box.height * 0.68}px`;
+    trail.style.width = `${width}px`;
+    trail.style.setProperty('--trail-opacity', String(0.28 + strength * 0.42));
+    trail.style.setProperty('--trail-drift', `${behind * (4 + strength * 5)}px`);
+    portal.appendChild(trail);
+    trail.addEventListener('animationend', () => trail.remove(), { once: true });
+    window.setTimeout(() => trail.remove(), 480);
+  }
+
+  function runLabContrails(shell, portal, dirX) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return () => {};
+    }
+
+    let running = true;
+    let lastX = null;
+    let accum = 0;
+    const baseDist = 9;
+
+    function tick() {
+      if (!running) return;
+      const lab = shell.querySelector('.home-intro__lab');
+      const box = lab ? rectOf(lab) : rectOf(shell);
+
+      if (lastX !== null) {
+        const step = Math.abs(box.left - lastX);
+        accum += step;
+        const strength = Math.min(1.35, 0.55 + step * 0.14);
+        while (accum >= baseDist) {
+          accum -= baseDist;
+          spawnLabTrail(portal, box, strength, dirX);
+        }
+      }
+      lastX = box.left;
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+    return () => {
+      running = false;
+    };
+  }
+
   function shrinkDivider(el, ms, ease) {
     return new Promise((resolve) => {
       void el.offsetWidth;
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          el.style.transition = `transform ${ms}ms ${ease}, opacity ${ms}ms ${ease}`;
-          el.style.transform = 'scaleX(0)';
-          el.style.opacity = '0';
-          window.setTimeout(resolve, ms + 80);
-        });
+        el.style.transition = `transform ${ms}ms ${ease}, opacity ${ms}ms ${ease}`;
+        el.style.transform = 'scaleX(0)';
+        el.style.opacity = '0';
+        onTransitionEnd(el, 'transform', ms).then(resolve);
       });
     });
   }
@@ -117,8 +194,10 @@
     portal.appendChild(shell);
 
     const qcs = getComputedStyle(questionEl);
-    shell.style.left = `${from.left}px`;
-    shell.style.top = `${flyTop}px`;
+    shell.style.left = '0';
+    shell.style.top = '0';
+    shell.style.transform = buildFlyTransform(from.left, flyTop);
+    shell.style.transformOrigin = '0 0';
     shell.style.fontFamily = qcs.fontFamily;
     shell.style.fontSize = qcs.fontSize;
     shell.style.fontWeight = qcs.fontWeight;
@@ -130,44 +209,35 @@
 
     const deltaX = toLeft - from.left;
 
+    const dirX = Math.sign(deltaX) || 1;
+    let stopContrails = () => {};
+
     return new Promise((resolve) => {
       void shell.offsetWidth;
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          shell.style.setProperty('--lab-fly-x', `${deltaX}px`);
-          shell.style.transition = `transform ${ms}ms ${FLY_EASE}`;
-          shell.style.transform = 'translate3d(var(--lab-fly-x), 0, 0)';
-
-          let done = false;
-          const finish = () => {
-            if (done) return;
-            done = true;
-            shell.removeEventListener('transitionend', onEnd);
-            resolve({ shell, hold, deltaX });
-          };
-          const onEnd = (e) => {
-            if (e.target !== shell) return;
-            if (e.propertyName !== 'transform') return;
-            finish();
-          };
-          shell.addEventListener('transitionend', onEnd);
-          window.setTimeout(finish, ms + 100);
+        stopContrails = runLabContrails(shell, portal, dirX);
+        shell.style.transition = `transform ${ms}ms ${FLY_EASE}`;
+        shell.style.transform = buildFlyTransform(from.left + deltaX, flyTop);
+        onTransitionEnd(shell, 'transform', ms, 100).then(() => {
+          stopContrails();
+          resolve({ shell, hold, deltaX, stopContrails });
         });
       });
     });
   }
 
-  function placeFixed(el, rect) {
+  function placeFixed(el, rect, scaleX = 1, scaleY = 1) {
     const rules = [
       'position:fixed',
-      `left:${rect.left}px`,
-      `top:${rect.top}px`,
+      'left:0',
+      'top:0',
       'margin:0',
       'z-index:10003',
       'visibility:visible',
       'pointer-events:none',
       'opacity:1',
-      'transform:none',
+      `transform:${buildFlyTransform(rect.left, rect.top, scaleX, scaleY)}`,
+      'transform-origin:0 0',
       'animation:none',
       'transition:none',
       'box-sizing:border-box',
@@ -186,32 +256,11 @@
       void el.offsetWidth;
 
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const move = `left ${ms}ms ${FLY_EASE}, top ${ms}ms ${FLY_EASE}`;
-          const resize = `, width ${ms}ms ${FLY_EASE}, height ${ms}ms ${FLY_EASE}`;
-          el.style.transition = isLogoPiece(el) ? move + resize : move;
-          el.style.left = `${to.left}px`;
-          el.style.top = `${to.top}px`;
-          if (isLogoPiece(el)) {
-            el.style.width = `${to.width}px`;
-            el.style.height = `${to.height}px`;
-          }
-
-          let done = false;
-          const finish = () => {
-            if (done) return;
-            done = true;
-            el.removeEventListener('transitionend', onEnd);
-            resolve();
-          };
-          const onEnd = (e) => {
-            if (e.target !== el) return;
-            if (e.propertyName !== 'left' && e.propertyName !== 'top') return;
-            finish();
-          };
-          el.addEventListener('transitionend', onEnd);
-          window.setTimeout(finish, ms + 100);
-        });
+        const endScaleX = isLogoPiece(el) ? to.width / from.width : 1;
+        const endScaleY = isLogoPiece(el) ? to.height / from.height : 1;
+        el.style.transition = `transform ${ms}ms ${FLY_EASE}`;
+        el.style.transform = buildFlyTransform(to.left, to.top, endScaleX, endScaleY);
+        onTransitionEnd(el, 'transform', ms, 100).then(resolve);
       });
     });
   }
@@ -293,15 +342,18 @@
     question.classList.add('is-vanish');
     if (labFly?.shell) {
       const { shell, deltaX } = labFly;
+      const shellRect = rectOf(shell);
       shell.style.transition = 'opacity 0.38s ease-in, transform 0.38s ease-in';
-      shell.style.transform = `translate3d(${deltaX}px, 10px, 0)`;
+      shell.style.transform = buildFlyTransform(shellRect.left + deltaX, shellRect.top + 10);
       shell.style.opacity = '0';
       void shell.offsetWidth;
     }
     await wait(420);
 
+    labFly?.stopContrails?.();
     labFly?.hold?.remove();
     labFly?.shell?.remove();
+    portal.querySelectorAll('.home-intro__lab-trail').forEach((el) => el.remove());
     question.hidden = true;
     flyer.hidden = false;
 
@@ -356,7 +408,13 @@
 
     await Promise.all(flyTasks);
 
-    items.forEach((p, i) => placeFixed(p.flyEl, ends[i]));
+    items.forEach((p, i) => {
+      const end = ends[i];
+      const start = starts[i].rect;
+      const scaleX = isLogoPiece(p.flyEl) ? end.width / start.width : 1;
+      const scaleY = isLogoPiece(p.flyEl) ? end.height / start.height : 1;
+      placeFixed(p.flyEl, end, scaleX, scaleY);
+    });
 
     try {
       sessionStorage.setItem(STORAGE_KEY, '1');
