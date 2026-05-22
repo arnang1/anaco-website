@@ -9,12 +9,55 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/anaco.css">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem('anaco-intro-seen')) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('intro-pending');
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 
+<div id="home-intro" class="home-intro" aria-live="polite">
+  <div class="home-intro__backdrop" aria-hidden="true"></div>
+  <div class="home-intro__stage">
+    <p class="home-intro__question">
+      <span class="home-intro__line home-intro__line--1">
+        <span class="home-intro__stack home-intro__stack--lead">
+          <span class="home-intro__stack-line">What if we</span>
+          <span class="home-intro__stack-line">brought the</span>
+          <span class="home-intro__stack-line home-intro__stack-line--word"><span class="home-intro__lab-wrap"><span class="home-intro__lab">lab</span></span></span>
+        </span>
+      </span>
+      <span class="home-intro__line home-intro__line--2">
+        <span class="home-intro__stack home-intro__stack--dest">
+          <span class="home-intro__stack-line">to</span>
+          <span class="home-intro__stack-line">the</span>
+          <span class="home-intro__stack-line home-intro__stack-line--word"><span class="home-intro__lab-slot" aria-hidden="true"></span><span class="home-intro__sample">sample</span><span class="home-intro__q-mark">?</span></span>
+        </span>
+      </span>
+    </p>
+    <div class="home-intro__flyer" hidden>
+      <div class="home-intro__cluster home-intro__cluster--title">
+        <span class="intro-fly intro-fly--meet display-xl headline-row">Meet</span>
+        <span class="intro-fly intro-fly--tinylab display-xl headline-row headline-row--accent"><span class="accent-chip">TinyLab</span></span>
+      </div>
+      <span class="intro-fly intro-fly--divider" aria-hidden="true"></span>
+      <div class="home-intro__cluster home-intro__cluster--brand">
+        <img class="intro-fly intro-fly--mark brand-mark" src="images/favicon.png" alt="" width="48" height="48">
+        <span class="intro-fly intro-fly--name">Anaco</span>
+      </div>
+    </div>
+  </div>
+  <div class="home-intro__fly-portal" aria-hidden="true"></div>
+</div>
+
 <nav class="nav">
   <div class="nav-inner">
-    <a href="./" class="nav-logo"><img src="images/favicon.png" alt="" class="brand-mark" width="48" height="48"><span>Anaco</span></a>
+    <a href="./" class="nav-logo"><img src="images/favicon.png" alt="" class="brand-mark intro-target" width="48" height="48"><span class="intro-target">Anaco</span></a>
     <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="preorder/" class="nav-cta">Pre-Order</a></li>
@@ -30,10 +73,10 @@
       <div class="hero-inner">
         <div class="hero-content">
           <h1 class="display-xl hero-headline">
-            Meet <span class="accent-chip hero-accent">TinyLab</span>
+            <span class="headline-row intro-target">Meet</span>
+            <span class="headline-row headline-row--accent intro-target"><span class="accent-chip hero-accent">TinyLab</span></span>
           </h1>
-          <p class="hero-lead">What if we brought the laboratory... to the sample?</p>
-          <p class="hero-blurb">Laboratory precision that's as modern as you are.</p>
+          <p class="hero-tagline">Portable lab-grade analysis, wherever your work happens.</p>
           <div class="hero-btns">
             <a href="#product" class="btn btn-ghost">Explore in 3D</a>
             <a href="preorder/" class="btn btn-primary">Pre-Order →</a>
@@ -570,6 +613,7 @@
 <script type="module" src="js/tinylab-viewer.js"></script>
 <script src="js/industries-data.js" defer></script>
 <script src="js/industries-carousel.js" defer></script>
+<script src="js/home-intro.js" defer></script>
 <script src="js/anaco.js" defer></script>
 <script>
 function toggleFacility(header) {

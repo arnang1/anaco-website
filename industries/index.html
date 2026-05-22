@@ -821,9 +821,12 @@ function loadBg(el) {
 }
 
 const fadeObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('is-visible', 'visible');
+    fadeObserver.unobserve(e.target);
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px 12% 0px' });
 
 const gridImgObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -847,7 +850,9 @@ function showIndustryView() {
     details.forEach(d => { d.hidden = d !== detail; });
     document.title = detail.dataset.title + ' — Anaco';
     window.scrollTo(0, 0);
-    detail.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+    detail.querySelectorAll('.fade-in').forEach((el) => {
+      if (!el.classList.contains('is-visible')) fadeObserver.observe(el);
+    });
   } else {
     location.replace('../#industries');
   }
