@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "preview": "python -m http.server 3000",
-    "preview:serve": "npx --yes serve . -l 3000"
+    "preview:serve": "npx --yes serve . -l 3000",
+    "optimize-images": "powershell -ExecutionPolicy Bypass -File scripts/optimize-images.ps1"
   }
 }

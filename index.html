@@ -86,7 +86,14 @@
           <div class="hero-device-stage">
             <div class="hero-device-hatch pattern-hatch" aria-hidden="true"></div>
             <div class="media-frame media-frame--device">
-              <img src="images/tinylab-device.gif" alt="TinyLab device">
+              <img
+                src="images/hero/tinylab-device-poster.jpg"
+                data-animated-src="images/tinylab-device.gif"
+                alt="TinyLab device"
+                width="456"
+                height="456"
+                decoding="async"
+                fetchpriority="high">
             </div>
           </div>
         </div>
@@ -580,7 +587,23 @@
   }
 }
 </script>
-<script type="module" src="js/tinylab-viewer.js"></script>
+<script type="module">
+  (function () {
+    var target = document.getElementById('product');
+    var boot = function () { import('./js/tinylab-viewer.js'); };
+    if (!target || !('IntersectionObserver' in window)) {
+      boot();
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        boot();
+        obs.disconnect();
+      }
+    }, { rootMargin: '280px 0px' });
+    obs.observe(target);
+  })();
+</script>
 <script src="js/industries-data.js" defer></script>
 <script src="js/industries-carousel.js" defer></script>
 <script src="js/home-intro.js" defer></script>

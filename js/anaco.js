@@ -241,8 +241,51 @@
     const items = track.querySelectorAll('.carousel-item');
     if (!items.length) return;
     const gap = parseFloat(getComputedStyle(track).gap) || 12;
-    const step = (items[0].offsetWidth + gap) * Math.min(3, items.length);
+    const step = items[0].offsetWidth + gap;
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
+
+  function loadHeroAnimatedGif() {
+    const img = document.querySelector('.hero-visual img[data-animated-src]');
+    if (!img || img.dataset.animatedLoaded === '1') return;
+    const gif = img.getAttribute('data-animated-src');
+    if (!gif) return;
+
+    const apply = function () {
+      img.src = gif;
+      img.dataset.animatedLoaded = '1';
+    };
+
+    const probe = new Image();
+    probe.onload = apply;
+    probe.onerror = apply;
+    probe.src = gif;
+  }
+
+  function scheduleHeroGif() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const start = function () {
+      window.setTimeout(loadHeroAnimatedGif, 350);
+    };
+
+    const html = document.documentElement;
+    if (html.classList.contains('intro-done')) {
+      start();
+      return;
+    }
+
+    document.addEventListener('anaco-intro-complete', start, { once: true });
+    window.setTimeout(function () {
+      const img = document.querySelector('.hero-visual img[data-animated-src]');
+      if (img && img.dataset.animatedLoaded !== '1') loadHeroAnimatedGif();
+    }, 10000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleHeroGif);
+  } else {
+    scheduleHeroGif();
+  }
 
 })();

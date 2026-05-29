@@ -6,8 +6,14 @@
   var unfold = document.getElementById('industryUnfold');
   if (!data || !track || !unfold) return;
 
+  var VISIBLE_INITIAL = 5;
   var activeId = null;
   var panels = Object.create(null);
+
+  function thumbSrc(imgPath) {
+    var name = imgPath.replace(/^images\//, '').replace(/\.(jpe?g|png|webp)$/i, '');
+    return 'images/carousel/' + name + '.jpg';
+  }
 
   function panelHtml(item) {
     var cases = item.cases.map(function (c) {
@@ -26,7 +32,25 @@
     );
   }
 
-  data.forEach(function (item) {
+  function loadItemImage(wrap) {
+    if (!wrap || wrap.dataset.loaded === '1') return;
+    var src = wrap.dataset.src;
+    if (!src) return;
+    var img = wrap.querySelector('img');
+    if (!img) return;
+    img.src = src;
+    wrap.dataset.loaded = '1';
+  }
+
+  function prefetchAhead(fromIndex, count) {
+    var items = track.querySelectorAll('.carousel-item');
+    for (var i = fromIndex; i < Math.min(fromIndex + count, items.length); i++) {
+      var wrap = items[i].querySelector('.carousel-item-img');
+      if (wrap) loadItemImage(wrap);
+    }
+  }
+
+  data.forEach(function (item, index) {
     panels[item.id] = panelHtml(item);
 
     var btn = document.createElement('button');
@@ -35,14 +59,54 @@
     btn.dataset.id = item.id;
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-controls', 'industryUnfold');
-    btn.innerHTML =
-      '<div class="carousel-item-img" style="background-image:url(\'' + item.img + '\')"></div>' +
-      '<span class="carousel-item-title">' + item.title + '</span>';
+
+    var thumb = thumbSrc(item.img);
+    var imgHtml =
+      '<div class="carousel-item-img" data-src="' + thumb + '" data-loaded="0">' +
+        '<img alt="" decoding="async" width="420" height="280">' +
+      '</div>';
+
+    btn.innerHTML = imgHtml + '<span class="carousel-item-title">' + item.title + '</span>';
     btn.addEventListener('click', function () {
       toggle(item.id, btn);
     });
     track.appendChild(btn);
+
+    if (index < VISIBLE_INITIAL) {
+      loadItemImage(btn.querySelector('.carousel-item-img'));
+    }
   });
+
+  if ('IntersectionObserver' in window) {
+    var imgObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          loadItemImage(entry.target);
+          imgObserver.unobserve(entry.target);
+        });
+      },
+      { root: track, rootMargin: '120px 0px', threshold: 0.01 }
+    );
+    track.querySelectorAll('.carousel-item-img[data-loaded="0"]').forEach(function (el) {
+      imgObserver.observe(el);
+    });
+  } else {
+    prefetchAhead(VISIBLE_INITIAL, data.length);
+  }
+
+  track.addEventListener(
+    'scroll',
+    function () {
+      var items = track.querySelectorAll('.carousel-item');
+      if (!items.length) return;
+      var gap = parseFloat(getComputedStyle(track).gap) || 12;
+      var step = items[0].offsetWidth + gap;
+      var index = Math.round(track.scrollLeft / step);
+      prefetchAhead(index, VISIBLE_INITIAL + 2);
+    },
+    { passive: true }
+  );
 
   function closeAll() {
     activeId = null;
@@ -67,5 +131,6 @@
     });
     unfold.innerHTML = panels[id];
     unfold.hidden = false;
+    loadItemImage(btn.querySelector('.carousel-item-img'));
   }
 })();
