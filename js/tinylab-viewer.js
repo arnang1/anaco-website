@@ -5,6 +5,36 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const MODEL_URL = 'images/tinylab-model.glb';
 const HIGHLIGHT_COLOR = new THREE.Color(0x146ca6);
+const VIEWER_BASE_COLOR = 0x5c636b;
+const VIEWER_ROUGHNESS = 0.32;
+const VIEWER_METALNESS = 0.18;
+
+function applyViewerMaterial(material) {
+  if (!material) return;
+  if (material.color) material.color.setHex(VIEWER_BASE_COLOR);
+  if ('roughness' in material) material.roughness = VIEWER_ROUGHNESS;
+  if ('metalness' in material) material.metalness = VIEWER_METALNESS;
+  material.side = THREE.DoubleSide;
+}
+
+function setupViewerLights(targetScene) {
+  targetScene.add(new THREE.AmbientLight(0xffffff, 0.28));
+
+  const hemi = new THREE.HemisphereLight(0xffffff, 0x9aa3ad, 0.5);
+  targetScene.add(hemi);
+
+  const key = new THREE.DirectionalLight(0xffffff, 1.5);
+  key.position.set(5, 9, 7);
+  targetScene.add(key);
+
+  const fill = new THREE.DirectionalLight(0xf0f4f8, 0.42);
+  fill.position.set(-6, 4, 4);
+  targetScene.add(fill);
+
+  const rim = new THREE.DirectionalLight(0xffffff, 0.72);
+  rim.position.set(-1, 5, -7);
+  targetScene.add(rim);
+}
 
 const MODULES = {
   'flow-cell': { name: 'Flow Cell Module', file: 'images/flow-cell-module.glb' },
@@ -46,31 +76,77 @@ function hideSpecPanel() {
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.2;
+renderer.toneMappingExposure = 1.65;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-// Scene
+// Scene — transparent canvas so CSS stage gradient shows through
 const scene = new THREE.Scene();
-// OVERRIDE: Changed background to pure white
-scene.background = new THREE.Color(0xffffff);
+scene.background = null;
+renderer.setClearColor(0x000000, 0);
 const env = new THREE.PMREMGenerator(renderer);
-scene.environment = env.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environment = env.fromScene(new RoomEnvironment(), 0.1).texture;
+setupViewerLights(scene);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 100);
 camera.position.set(0, 0.5, 2);
 
-// Controls
+// Controls — CAD-style: orbit a fixed pivot, no drifting pan
 const controls = new OrbitControls(camera, canvas);
+const orbitPivot = new THREE.Vector3();
+let pivotLocked = true;
+
+function setOrbitPivot(center) {
+  orbitPivot.copy(center);
+  controls.target.copy(orbitPivot);
+}
+
 controls.enableDamping = true;
-controls.dampingFactor = 0.08;
+controls.dampingFactor = 0.1;
 controls.minDistance = 0.005;
 controls.maxDistance = 5000;
-controls.zoomSpeed = 3.0;
-controls.rotateSpeed = 1.0;
-controls.minPolarAngle = 0;
-controls.maxPolarAngle = Math.PI;
-controls.enablePan = true;
+controls.zoomSpeed = 1.2;
+controls.rotateSpeed = 0.85;
+controls.screenSpacePanning = false;
+controls.enablePan = false;
+controls.minPolarAngle = 0.2;
+controls.maxPolarAngle = Math.PI - 0.2;
+controls.mouseButtons = {
+  LEFT: THREE.MOUSE.ROTATE,
+  MIDDLE: THREE.MOUSE.DOLLY,
+  RIGHT: THREE.MOUSE.DOLLY
+};
+controls.touches = {
+  ONE: THREE.TOUCH.ROTATE,
+  TWO: THREE.TOUCH.DOLLY
+};
+
+controls.addEventListener('change', () => {
+  if (!pivotLocked) return;
+  if (controls.target.distanceTo(orbitPivot) < 1e-4) return;
+  const offset = camera.position.clone().sub(controls.target);
+  controls.target.copy(orbitPivot);
+  camera.position.copy(orbitPivot).add(offset);
+});
+
+const pivotAxes = new THREE.AxesHelper(1);
+pivotAxes.matrixAutoUpdate = false;
+scene.add(pivotAxes);
+
+function updatePivotAxes(size) {
+  const s = Math.max(size * 0.22, 0.08);
+  pivotAxes.scale.set(s, s, s);
+  pivotAxes.position.copy(orbitPivot);
+  pivotAxes.updateMatrix();
+}
+
+controls.addEventListener('start', () => {
+  canvas.style.cursor = 'grabbing';
+});
+controls.addEventListener('end', () => {
+  canvas.style.cursor = hoveredModule ? 'pointer' : 'grab';
+});
+canvas.style.cursor = 'grab';
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -85,6 +161,35 @@ const DRAG_THRESHOLD = 4;
 
 let initialCamPos = new THREE.Vector3();
 let initialCamTarget = new THREE.Vector3();
+let viewerModelSize = 1;
+let floorGrid = null;
+
+function disposeGrid(grid) {
+  grid.geometry.dispose();
+  const mats = Array.isArray(grid.material) ? grid.material : [grid.material];
+  mats.forEach((m) => m.dispose());
+}
+
+function setViewerFloor(box) {
+  if (floorGrid) {
+    scene.remove(floorGrid);
+    disposeGrid(floorGrid);
+    floorGrid = null;
+  }
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  const span = Math.max(size.x, size.z) * 2.2;
+  const divisions = Math.min(32, Math.max(16, Math.round(span * 4)));
+  floorGrid = new THREE.GridHelper(span, divisions, 0xa8b0ba, 0xc8ced6);
+  floorGrid.position.set(center.x, box.min.y - 0.002, center.z);
+  const mats = Array.isArray(floorGrid.material) ? floorGrid.material : [floorGrid.material];
+  mats.forEach((m) => {
+    m.opacity = 0.55;
+    m.transparent = true;
+  });
+  floorGrid.renderOrder = -1;
+  scene.add(floorGrid);
+}
 
 // Animation
 let camAnimation = null;
@@ -121,15 +226,7 @@ loader.load(MODEL_URL, (gltf) => {
       allMeshes.push(child);
       originalMaterials.set(child, child.material);
       child.material = child.material.clone();
-      
-      // OVERRIDE: Force all meshes to be a dark gray/black color
-      if (child.material.color) {
-        child.material.color.setHex(0x1a1a1a); 
-      }
-      
-      // FIX: Render both sides of the flat parts
-      child.material.side = THREE.DoubleSide;
-      
+      applyViewerMaterial(child.material);
       child.material.transparent = true;
       child.material.opacity = 1;
       const modKey = assignModule(child, nodeIdx);
@@ -148,11 +245,14 @@ loader.load(MODEL_URL, (gltf) => {
   const maxDim = Math.max(size.x, size.y, size.z);
   const dist = maxDim * 1.8;
   camera.position.set(center.x + dist * 0.5, center.y + dist * 0.3, center.z + dist);
-  controls.target.copy(center);
+  viewerModelSize = maxDim;
+  setOrbitPivot(center);
   controls.update();
+  updatePivotAxes(viewerModelSize);
+  setViewerFloor(box);
 
   initialCamPos.copy(camera.position);
-  initialCamTarget.copy(controls.target);
+  initialCamTarget.copy(orbitPivot);
 
   placeholder.style.display = 'none';
 }, undefined, (err) => {
@@ -229,10 +329,11 @@ function animateCamera(toPos, toTarget, duration) {
   if (camAnimation) camAnimation.cancel = true;
 
   const fromPos = camera.position.clone();
-  const fromTarget = controls.target.clone();
+  const fromTarget = orbitPivot.clone();
   const start = performance.now();
   const anim = { cancel: false };
   camAnimation = anim;
+  pivotLocked = false;
 
   function easeInOutCubic(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
 
@@ -243,9 +344,16 @@ function animateCamera(toPos, toTarget, duration) {
     const e = easeInOutCubic(t);
     camera.position.lerpVectors(fromPos, toPos, e);
     controls.target.lerpVectors(fromTarget, toTarget, e);
+    pivotAxes.position.copy(controls.target);
+    pivotAxes.updateMatrix();
     controls.update();
     if (t < 1) requestAnimationFrame(step);
-    else camAnimation = null;
+    else {
+      camAnimation = null;
+      setOrbitPivot(toTarget);
+      pivotLocked = true;
+      updatePivotAxes(viewerModelSize);
+    }
   }
   step();
 }
@@ -335,13 +443,7 @@ function enterModule(key) {
     activeModuleModel.traverse(c => {
       if (c.isMesh) {
         c.material = c.material.clone();
-        
-        // OVERRIDE: Force all parts of the exploded module to be dark gray/black
-        if (c.material.color) {
-          c.material.color.setHex(0x1a1a1a);
-        }
-
-        c.material.side = THREE.DoubleSide;
+        applyViewerMaterial(c.material);
         c.material.transparent = true;
         c.material.opacity = 0;
         
@@ -397,8 +499,10 @@ function enterModule(key) {
     }
 
     scene.add(activeModuleModel);
+    setViewerFloor(mbox);
 
     // Camera target — account for the longer stretched assembly
+    viewerModelSize = maxDim;
     const dist = maxDim * 3.2;
     const newPos = new THREE.Vector3(mcenter.x + dist * 0.5, mcenter.y + dist * 0.3, mcenter.z + dist);
     animateCamera(newPos, mcenter, 1000);
@@ -416,7 +520,12 @@ function enterModule(key) {
         d.mesh.material.opacity = Math.min(t * 1.5, 1);
       });
 
-      if (t < 1) requestAnimationFrame(explodeStep);
+      if (t < 1) {
+        requestAnimationFrame(explodeStep);
+      } else {
+        const expandedBox = new THREE.Box3().setFromObject(activeModuleModel);
+        setViewerFloor(expandedBox);
+      }
     }
     explodeStep();
   });
@@ -453,6 +562,10 @@ window.exitModule = function() {
   }
   setTimeout(fadeMainIn, 300);
 
+  if (mainModel) {
+    const box = new THREE.Box3().setFromObject(mainModel);
+    setViewerFloor(box);
+  }
   animateCamera(initialCamPos, initialCamTarget, 900);
   activeModule = null;
   backBtn.style.display = 'none';
@@ -462,24 +575,28 @@ window.exitModule = function() {
 };
 
 window.zoomIn = function() {
-  const dir = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
-  const dist = camera.position.distanceTo(controls.target);
+  const dir = new THREE.Vector3().subVectors(camera.position, orbitPivot).normalize();
+  const dist = camera.position.distanceTo(orbitPivot);
   const newDist = Math.max(dist * 0.7, controls.minDistance);
-  const newPos = controls.target.clone().add(dir.multiplyScalar(newDist));
-  animateCamera(newPos, controls.target.clone(), 250);
+  const newPos = orbitPivot.clone().add(dir.multiplyScalar(newDist));
+  animateCamera(newPos, orbitPivot, 250);
 };
 
 window.zoomOut = function() {
-  const dir = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
-  const dist = camera.position.distanceTo(controls.target);
+  const dir = new THREE.Vector3().subVectors(camera.position, orbitPivot).normalize();
+  const dist = camera.position.distanceTo(orbitPivot);
   const newDist = Math.min(dist * 1.4, controls.maxDistance);
-  const newPos = controls.target.clone().add(dir.multiplyScalar(newDist));
-  animateCamera(newPos, controls.target.clone(), 250);
+  const newPos = orbitPivot.clone().add(dir.multiplyScalar(newDist));
+  animateCamera(newPos, orbitPivot, 250);
 };
 
 // Render loop
 function animate() {
   requestAnimationFrame(animate);
+  if (pivotLocked) {
+    pivotAxes.position.copy(orbitPivot);
+    pivotAxes.updateMatrix();
+  }
   controls.update();
   renderer.render(scene, camera);
 }
