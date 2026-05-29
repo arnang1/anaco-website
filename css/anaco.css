@@ -1118,8 +1118,32 @@ html:not(.reveal-lite) .text-rotator-word {
   font-size: var(--copy-industries-float-text);
   line-height: 1.38;
 }
+#facilities .layer-float--header-up,
+#facilities .layer-float--header-up-more {
+  top: calc(
+    -1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift))
+    + clamp(2.35rem, 4.8vw, 3.35rem)
+  );
+}
 #facilities .layer-float--header {
-  top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));
+  --float-header-pad-block-start: clamp(12px, 1.9vw, 18px);
+  --float-header-pad-block-end: clamp(10px, 1.4vw, 15px);
+  --float-header-pad-inline: clamp(16px, 2.2vw, 24px);
+  padding-block: var(--float-header-pad-block-start) var(--float-header-pad-block-end);
+  padding-inline: var(--float-header-pad-inline);
+  gap: 0.35rem;
+}
+#facilities .sheet--has-float-header > .layer-float + .facility-list {
+  margin-top: clamp(3.35rem, 5.5vw, 4.35rem);
+}
+@media (min-width: 901px) {
+  #product .sheet--has-float-header > .layer-float.layer-float--header {
+    width: max-content;
+    max-width: min(36rem, calc(100% - var(--sheet-pad) * 2));
+  }
+  #product .layer-float--lg .layer-float-title {
+    white-space: nowrap;
+  }
 }
 #product .sheet.sheet--has-float-header > .layer-float {
   top: calc(-1 * (var(--layer-hang) + var(--sheet-pad) + var(--float-header-lift-more)));

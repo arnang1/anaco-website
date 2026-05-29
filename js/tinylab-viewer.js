@@ -461,14 +461,6 @@ window.exitModule = function() {
   if (titleEl) titleEl.style.display = 'none';
 };
 
-window.resetView = function() {
-  if (activeModule) {
-    exitModule();
-  } else {
-    animateCamera(initialCamPos, initialCamTarget, 700);
-  }
-};
-
 window.zoomIn = function() {
   const dir = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
   const dist = camera.position.distanceTo(controls.target);
