@@ -66,8 +66,8 @@
     <button class="nav-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="./" class="nav-link" data-nav-home>Home</a></li>
-      <li><a href="#" class="nav-link" data-scroll-to="industries">Industries</a></li>
       <li><a href="#" class="nav-link" data-scroll-to="product">Product</a></li>
+      <li><a href="#" class="nav-link" data-scroll-to="industries">Industries</a></li>
       <li><a href="#" class="nav-link" data-scroll-to="facilities">About</a></li>
       <li><a href="#" class="nav-link" data-scroll-to="contact">Contact</a></li>
       <li><a href="shop/" class="nav-cta">Order<span class="nav-cta-exit" aria-hidden="true"><svg class="nav-cta-exit__icon" viewBox="0 0 12 12" focusable="false"><path d="M3.5 8.5L8.5 3.5M8.5 3.5H5M8.5 3.5V7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
@@ -215,6 +215,31 @@
   </div>
 </section>
 
+<section class="home-section" id="product">
+  <div class="home-wrap">
+    <div class="sheet">
+      <h2 class="home-section-title">Tinylab at a glance...</h2>
+      <div class="product-carousel" id="productCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Tinylab gallery">
+        <div class="product-carousel__stage">
+          <div class="product-carousel__frame">
+            <div class="product-carousel__track" id="productCarouselTrack"></div>
+            <button type="button" class="product-carousel__nav product-carousel__nav--prev" aria-label="Previous image">
+              <svg class="product-carousel__nav-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path d="M14 6L8 12l6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="product-carousel__nav product-carousel__nav--next" aria-label="Next image">
+              <svg class="product-carousel__nav-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="home-section" id="overview">
   <div class="home-wrap">
     <div class="sheet">
@@ -252,31 +277,6 @@
       <div class="industries-hub">
         <div class="industries-hub-stage">
           <div class="industries-grid" id="industriesGrid" aria-label="Industries"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="home-section" id="product">
-  <div class="home-wrap">
-    <div class="sheet">
-      <h2 class="home-section-title">Tinylab at a glance...</h2>
-      <div class="product-carousel" id="productCarousel" tabindex="0" aria-roledescription="carousel" aria-label="Tinylab gallery">
-        <div class="product-carousel__stage">
-          <div class="product-carousel__frame">
-            <div class="product-carousel__track" id="productCarouselTrack"></div>
-            <button type="button" class="product-carousel__nav product-carousel__nav--prev" aria-label="Previous image">
-              <svg class="product-carousel__nav-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-                <path d="M14 6L8 12l6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <button type="button" class="product-carousel__nav product-carousel__nav--next" aria-label="Next image">
-              <svg class="product-carousel__nav-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
-                <path d="M10 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </div>
